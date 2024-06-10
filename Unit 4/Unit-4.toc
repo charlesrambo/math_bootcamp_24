@@ -1,0 +1,7 @@
+\beamer@sectionintoc {1}{Covariance Matrices}{3}{0}{1}
+\beamer@sectionintoc {2}{Principal Component Analysis (PCA)}{12}{0}{2}
+\beamer@sectionintoc {3}{Clipping Covariance Matrices}{24}{0}{3}
+\beamer@sectionintoc {4}{Stochastic Calculus}{39}{0}{4}
+\beamer@subsectionintoc {4}{1}{Introduction}{40}{0}{4}
+\beamer@subsectionintoc {4}{2}{Quadratic Variation}{52}{0}{4}
+\beamer@subsectionintoc {4}{3}{It\^o Integrals}{58}{0}{4}

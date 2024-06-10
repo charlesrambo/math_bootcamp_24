@@ -1,0 +1,30 @@
+\frametitle{Python Optimization Example Cont.}
+
+\begin{lstlisting}[language=Python]
+# Import minimize from scipy
+from scipy.optimize import minimize
+
+# Define f
+def f(x):
+  return x**2 + 1
+
+# Minimize function; set bounds equal to the domain
+minimize(f, x0 = [1], bounds = [(-1, 2)])
+\end{lstlisting}
+}
+The output is shown below.
+{
+\linespread{0.8}
+\tiny
+\begin{verbatim*}
+fun: array([1.])
+ hess_inv: <1x1 LbfgsInvHessProduct with dtype=float64>
+      jac: array([0.])
+  message: b'CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_<=_PGTOL'
+     nfev: 8
+      nit: 2
+   status: 0
+  success: True
+        x: array([-2.20890595e-10])
+\end{verbatim*}
+}

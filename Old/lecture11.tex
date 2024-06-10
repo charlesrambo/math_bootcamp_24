@@ -1,0 +1,312 @@
+\documentclass{beamer}
+
+\usepackage{lipsum}
+\usepackage{multicol}
+\usetheme{ucla}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{verbatim}
+\linespread{1.5}
+
+\usepackage{amsmath, amsthm, amssymb, latexsym}
+
+%\newtheorem{definition}{Definition}
+
+\title{Lecture 11}
+\author{Charles Rambo}
+\institute{UCLA Anderson School of Management}
+\date{2023}
+\location{Los Angeles, California}
+
+% Turn on slide numbers:
+\showSlideNumber{}
+
+\AtBeginSection[]
+{
+    \begin{frame}
+        \frametitle{Table of Contents}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+
+\begin{document}
+
+\insertTitleSlide
+
+\section{Stochastic Calculus} 
+
+\subsection{Introduction} 
+
+\begin{frame}
+\frametitle{Source} 
+I'm following these notes very closely: \url{http://www.columbia.edu/~mh2078/FoundationsFE/IntroStochCalc.pdf}
+\end{frame}
+
+\begin{frame}
+\frametitle{Probability Triple}
+We assume we have the probability space $(\Omega, \mathcal{F}, P)$ where
+\begin{itemize}
+\item $\Omega$ is the universe of possible outcomes.
+\item $\mathcal{F}$ represents the $\sigma$-algebra of events in $\Omega$.
+\item $P$ is the ``true" or physical probability measure.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Filtration}
+There is also a {\bf filtration} $\{\mathcal{F}_t\}_{t\geq 0}$ of $\sigma$-algebras that models the evolution of information through time. Since information increases over time $\mathcal{F}_s \subseteq \mathcal{F}_t$ for $s < t$.
+
+If it is know by time $t$ whether or not an event $E$ has occurred, then we have $E\in\mathcal{F}_t$. If we are working with a finite horizon $[0, T]$, then we can take $\mathcal{F} = \mathcal{F}_T$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Stochastic Process}
+
+\begin{Definition}
+For a given probability space $(\Omega, \mathcal{F}, P)$, a {\bf stochastic process} is a collection of random variables indexed by $\mathcal{T}$. We often write $\{X_t : t \in\mathcal{T}\}$ to denote a stochastic process, and we think of $\mathcal{T}$ as the time index.
+\end{Definition}
+\end{frame}
+
+\begin{frame}
+\frametitle{Stochastic Process Example}
+
+\begin{Example}
+For a high yield bond portfolio, we can model the total number of defaulted bonds this year up to day $t$ as a stochastic process. Denote the number of defaulted bonds on day $t$ by $N_t$. In this case, $\mathcal{T} = \{1, 2, 3,\ldots, 252\}$, assuming there are 252 days when the market is open. Using our prior notation, the stochastic process is $\{N_t : t\in\mathcal{T}\}$.
+\end{Example}
+
+\end{frame}
+
+\begin{frame}
+
+\frametitle{$\mathcal{F}_t$-Adapted}
+\begin{Definition}
+We say that a stochastic process $X_t$ is $\mathcal{F}_t${\bf-adapted} if for every $t$ in $\mathcal{T}$ the information about $X_t$ is contained in $\mathcal{F}_t$.
+\end{Definition}
+\end{frame}
+
+\begin{frame}
+\frametitle{Brownian Motion}
+\begin{Definition}
+A stochastic process $\{W_t : 0\leq t\}$ is a {\bf standard Brownian motion} if the following hold.
+\medskip
+
+\begin{quote}
+\begin{enumerate}
+\item[BM.1] $W_0 = 0$.
+\item[BM.2] It has continuous sample paths.
+\item[BM.3] It has independent stationary increments.
+\item[BM.4] $W_t - W_s \sim{\mathcal{N}(0, t - s)}$ for all $0\leq s \leq t$.
+\end{enumerate}
+\end{quote}
+\end{Definition}
+\end{frame}
+
+\begin{frame}
+\frametitle{Simulating Brownian Motion}
+Suppose that we want to simulate a Brownian motion on the interval $[0, T]$. Then construct a partition of the interval
+$$
+0 = t_0 < t_1 <\ldots < t_{n - 1} < t_n = T.
+$$
+For $i = 1, 2,\ldots, n$, generate $Z_i\sim{\mathcal{N}(0, 1^2)}$. Then 
+$$
+\widetilde{W}_{t_k} = \begin{cases} 0	,	&	k = 0\\
+						\sum_{i = 1}^k Z_i \sqrt{\Delta t_i},	&	k = 1, 2,\ldots, n
+						\end{cases}
+$$
+is ``approximately" Brownian motion.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Python Code: Five Brownian Motions on [0, 1]}
+
+{
+\linespread{0.7}
+\tiny
+\begin{verbatim*}
+import numpy as np, matplotlib.pyplot as plt
+from scipy.stats import norm
+
+# Use latex
+plt.rcParams['text.usetex'] = True
+
+# Use Seaborn style
+plt.style.use('seaborn')
+
+# Set the random seed
+np.random.seed(0)
+
+# Break up into n discrete intervals
+n = 500
+
+# Simulate five Brownian motions
+for _ in range(5):
+    
+    # Simulate Brownian motion for t in [0, 1]
+    Z = norm.rvs(scale = np.sqrt(1/n), size = n)
+    
+    # Take the cumulative sum; add 0 for the t = 0 value
+    W = np.insert(np.cumsum(Z), 0, 0)
+    
+    # Plot results
+    plt.plot(np.linspace(0, 1, n + 1), W)
+    
+# Add x-label
+plt.xlabel(r'$t$')
+
+# Add y-label
+plt.ylabel(r'$W_t$')
+
+# Add title to plot
+plt.title(r'Five Simulated Brownian Motions')
+
+# Save the figure
+plt.savefig(r'[location on machine]')
+
+plt.plot()
+\end{verbatim*}
+ }
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Output}
+Five Brownian motions on the interval $[0, 1]$, using a uniform partition that breaks $[0, 1]$ into 500 subintervals. 
+\begin{center}
+\includegraphics[scale = 0.4]{ex19.png}
+\end{center}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Martingale} 
+
+\begin{Definition}
+A stochastic process $\{X_t : 0\leq t \leq\infty\}$ is a {\bf martingale} with respect to the filtration $\mathcal{F}_t$ if the following hold.
+\medskip
+
+\begin{quote}
+\begin{enumerate}
+\item[M.1] $E\left[|X_t|\right] <\infty$ for all $t\geq 0$.
+\item[M.2] $E\left[ X_{t + s} | \mathcal{F}_t\right] = X_t$ for all $t, s \geq 0$.
+\end{enumerate}
+\end{quote}
+\end{Definition}
+
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Martingale Example} 
+\begin{Example}
+Prove the following are martingales.
+\begin{itemize}
+\item[(a)] $W_t$
+\item[(b)] $W_t^2 - t$
+\item[(c)] $\exp\left(\theta W_t - \frac{\theta^2 t}{2}\right)$
+\end{itemize}
+\end{Example}
+
+\end{frame}
+
+\subsection{Quadratic Variation}
+
+\begin{frame}
+\frametitle{Quadratic Variation}
+\begin{Definition}
+Let $X_t$ be some stochastic process. The {\bf quadratic variation} of a stochastic process $X_t$ is
+$$
+\lim_{\|\mathcal{P}\|\to 0} \sum_{k = 1}^n \Big(X_{t_k} - X_{t_{k - 1}}\Big)^2,
+$$
+where $\mathcal{P}$ is an arbitrary partition of $[0, T]$ and $\|\mathcal{P}\| = \max_k\{\Delta t_k\}$ is the mesh of the partition.
+\end{Definition}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Quadratic Variation Example}
+\begin{Example}
+Compute the quadratic variation of the deterministic process $X_t = t^2$.
+\end{Example}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Quadratic Variation Differentiable Function}
+Any differentiable function will end up having quadratic variance 0, like we saw for $t^2$ in our example. 
+\end{frame}
+
+\begin{frame}
+\frametitle{Quadratic Variation of Brownian Motion}
+
+\begin{Theorem}
+The quadratic variation of a standard Brownian motion is equal to $T$ with probability 1.
+\end{Theorem}
+
+\begin{Theorem}[Levey's Theorem]
+ A continuous martingale is a standard Brownian motion if and only if its quadratic variation over each interval $[0, t]$ is equal to $t$.
+\end{Theorem}
+
+\end{frame}
+
+\subsection{It\^o Integrals}
+
+\begin{frame}
+\frametitle{It\^o Integrals}
+\begin{Definition}
+The {\bf It\^o Integral} of $X_t$ with respect to standard Brownian motion
+$$
+\int_0^T X_t\ dW_t = \lim_{\| P\|\to 0} \sum_{k = 1}^{n } X_{t_{k - 1}} (W_{t_k} - W_{t_{k - 1}}),
+$$
+where $\mathcal{P} = (t_0, t_1,\ldots, t_n)$ is an arbitrary partition.
+\end{Definition}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{It\^o Integrals Example}
+\small 
+\begin{Example}
+Assuming the It\^o integral exists, compute $\int_0^T W_t\ dW_t$.
+\end{Example}
+
+{\bf Solution.}
+Consider the uniform partition $\Delta t = T/n$ and $t_k = k \Delta t$. Then
+\begin{align*}
+\int_0^ T W_t\ dW_t 	&= \lim_{n\to\infty}\sum_{k = 1}^n W_{t_{k - 1}} \left(W_{t_k} - W_{t_{k - 1}}\right)\\
+				&= \lim_{n\to\infty}\frac{1}{2} \sum_{k = 1}^n \left[ W_{t_k}^2 - W_{t_{k - 1}}^2 - (W_{t_k} - W_{t_{k - 1}})^2\right]\\
+				&=  \frac{1}{2} (W_{T}^2 - W_0^2) - \frac{1}{2}\lim_{n\to\infty} \sum_{k = 1}^n (W_{t_k} - W_{t_{k - 1}})^2\\
+				&= \frac{1}{2} (W_{T}^2 - W_0^2) - \frac{1}{2}T\\
+				&= \frac{1}{2} W_{T}^2 - \frac{1}{2}T.
+\end{align*}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Law of Iterated Expectations}
+Suppose that $s \leq t \leq T$. Then
+$$
+E[X_T |\mathcal{F}_s] = E\Big[E[X_T|\mathcal{F}_t] \Big|\mathcal{F}_s\Big].
+$$
+Instead of writing $E[X_T |\mathcal{F}_t]$ we often write $E_t[X_T]$. Using this notation, the Law of Iterated Expectations is
+$$
+E_s[X_T] = E_s\Big[E_t[X_T]\Big].
+$$
+\end{frame}
+
+\begin{frame}
+\frametitle{It\^o Isometry}
+\begin{Theorem}[It\^o Isometry]
+We have
+$$
+E\left[\left(\int_0^T X_t\ dW_t\right)^2\right] = E\left[\int_0^T X_t^2\ dt\right]
+$$
+whenever
+$$
+E\left[\int_0^T X_t^2\ dt\right] < \infty.
+$$
+\end{Theorem}
+\end{frame}
+
+
+\end{document}

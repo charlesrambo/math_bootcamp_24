@@ -1,0 +1,552 @@
+\documentclass{beamer}
+\usepackage{pgffor,pgfmath}
+\usepackage{lipsum}
+\usepackage{multicol}
+\usetheme{ucla}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{tikz}
+\linespread{1.5}
+\usepackage{comment}
+
+\usepackage{amsmath, amsthm, amssymb, latexsym}
+
+%\newtheorem{definition}{Definition}
+
+\title{Lecture 3}
+\author{Charles Rambo}
+\institute{UCLA Anderson School of Management}
+\date{2023}
+\location{Los Angeles, California}
+
+% Turn on slide numbers:
+\showSlideNumber{}
+
+\AtBeginSection[]
+{
+    \begin{frame}
+        \frametitle{Table of Contents}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+
+\begin{document}
+
+\insertTitleSlide
+
+\section{Sequences and Series}
+
+\subsection{Sequences}
+
+\begin{frame}
+\frametitle{Sequences}
+\begin{Definition}
+A sequence $\displaystyle(a_n)_{n = 1}^\infty$ is said to {\bf converge}, if there is a value $a$ in $\mathbb{R}$ which has the property that: For all $\epsilon > 0$, there exists an integer $N$ such that $n\geq N$ implies that $|a_n - a| < \epsilon$.  We often write
+$$
+a_n\to a\qquad\text{or}\qquad\lim_{n\to\infty} a_n = a
+$$
+when $\displaystyle(a_n)_{n = 1}^\infty$ converges to $a$. If $\displaystyle(a_n)_{n = 1}^\infty$ does not converge, then it {\bf diverges}. 
+\end{Definition}
+\end{frame}
+
+\frame{
+\frametitle{Sequences Example}
+\begin{Example}
+Determine which of the following sequences converge/diverge. If the sequence converges, find its limit.
+\begin{enumerate}
+\item[(a)] $\displaystyle a_n = \frac{1}{n}$
+\item[(b)] $\displaystyle b_n = \sqrt{n}$
+\item[(c)]  $\displaystyle c_n = (-1)^n$
+\item[(d)] $\displaystyle d_n = 1 + \frac{(-1)^n}{n}$
+\end{enumerate} 
+\end{Example}
+}
+
+\begin{frame}[fragile]
+\frametitle{Python Sequences Example}
+\begin{Example}
+Use Python to graph the four sequences in the previous example. Graph them on separate subplots, and for the sequences that converge use horizontal lines to show their respective limits.
+\end{Example}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Python Sequences Example Solution}
+\begin{multicols}{2}
+{\tiny
+\linespread{0.8}
+\begin{verbatim*}
+
+# Import modules 
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Use latex
+plt.rcParams['text.usetex'] = True
+# Use Seaborn style
+plt.style.use('seaborn')
+
+# Define functions
+a = lambda n: 1/n
+b = lambda n: np.sqrt(n)
+c = lambda n: (-1)**n
+d = lambda n: 1 + (-1)**n/n
+
+# Define the limits
+a_lim, d_lim = 0, 1
+
+# Get the n-values
+n_vals = list(range(1, 21))
+
+# Get the sequence values
+a_vals = [a(n) for n in n_vals]
+b_vals = [b(n) for n in n_vals]
+c_vals = [c(n) for n in n_vals]
+d_vals = [d(n) for n in n_vals]
+
+# Set up subplots
+fig, ax = plt.subplots(2, 2, sharey = True, 
+   figsize = (10, 6))
+
+# Plot a_n and its limit
+ax[0, 0].scatter(n_vals, a_vals)
+ax[0, 0].axhline(y = a_lim, color = 'r', 
+   linestyle = 'dashed')
+ax[0, 0].set_xlabel(r'$n$')
+ax[0, 0].set_ylabel(r'$a_n$')
+
+# Plot b_n and its limit
+ax[0, 1].scatter(n_vals, b_vals, label = r'$b_n$')
+ax[0, 1].set_xlabel(r'$n$')
+ax[0, 1].set_ylabel(r'$b_n$')
+
+# Plot c_n and its limit
+ax[1, 0].scatter(n_vals, c_vals)
+ax[1, 0].set_xlabel(r'$n$')
+ax[1, 0].set_ylabel(r'$c_n$')
+
+# Plot d_n and its limit
+ax[1, 1].scatter(n_vals, d_vals)
+ax[1, 1].axhline(y = d_lim, color = 'r', 
+   linestyle = 'dashed')
+ax[1, 1].set_xlabel(r'$n$')
+ax[1, 1].set_ylabel(r'$c_n$')
+
+plt.suptitle(r'Sequence Plots')
+
+# Save the figure
+plt.savefig(r'[location on machine]')
+plt.show()
+
+\end{verbatim*}
+}
+\end{multicols}
+\end{frame}
+
+\begin{frame}
+\frametitle{Python Sequences Example Result}
+\begin{center}
+\includegraphics[scale = 0.4]{ex5.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Triangle Inequality}
+For any real numbers $x$, $y$, and $z$,
+$$
+|x - y| \leq |x -z| + |z - y|.
+$$
+\end{frame}
+
+\frame{
+\frametitle{Sequences}
+\begin{Theorem}
+\begin{itemize}
+\item[(a)] The sequence $\displaystyle(a_n)_{n = 1}^\infty$ converges to $a$ in  $\mathbb{R}$ if and only if for every $\epsilon > 0$, we have $a_n$ in the interval $(a - \epsilon, a + \epsilon)$ for all but finitely many $n$.
+\item[(b)] If $\displaystyle(a_n)_{n = 1}^\infty$ converges to both $a$ and $a$, then $a = b$.
+\item[(c)] If $\displaystyle(a_n)_{n = 1}^\infty$ converges, then it is bounded. That is, convergence of $\displaystyle(a_n)_{n = 1}^\infty$ implies there exists a real number $N$ such that $|a_n| \leq N$ for all $n$.
+\end{itemize}
+\end{Theorem}
+}
+
+\frame{
+\frametitle{Sequence Properties} 
+\begin{Theorem} 
+Suppose $\displaystyle(a_n)_{n = 1}^\infty$ and $\displaystyle(b_n)_{n = 1}^\infty$ are real numbered sequences and
+$$
+\lim_{n\to\infty} a_n = a\qquad\text{and}\qquad\lim_{n\to\infty} b_n = b.
+$$
+Let $\alpha$ and $\beta$ be real constants.
+\begin{enumerate}
+\item[(a)] $\displaystyle\lim_{n\to\infty}\left(\alpha a_n + \beta b_n\right) = \alpha a + \beta b$
+\item[(b)] $\displaystyle\lim_{n\to\infty} a_n b_n = ab$
+\item[(c)] $\displaystyle\lim_{n\to\infty} \frac{1}{a_n} = \frac{1}{a}$ if $a\neq 0$.
+\end{enumerate}
+\end{Theorem}
+}
+
+\begin{frame}
+\frametitle{Monotonic Sequences}
+
+\begin{Definition}
+\begin{itemize}
+\item A real sequence $(a_n)_{n = 1}^\infty$ is {\bf monotonically increasing} if $a_n \leq a_{n + 1}$ for all $n$.
+\item A real sequence $(a_n)_{n = 1}^\infty$ is {\bf monotonically decreasing} if $a_n \geq a_{n + 1}$ for all $n$.
+\end{itemize}
+\end{Definition}
+
+\begin{Theorem}
+Suppose that  $(a_n)_{n = 1}^\infty$ is monotonic. Then it converges if and only if it is bounded.
+\end{Theorem}
+\end{frame}
+
+\subsection{Series}
+
+\begin{frame}
+\frametitle{Series}
+\begin{Definition}
+Consider a series $\displaystyle S = \sum_{k = 1}^\infty a_k$. Its {\bf $\boldsymbol n$-th partial sum} is $\displaystyle S_n = \sum_{k = 1}^n a_k$. The series $S$ {\bf converges} if the sequence $(S_n)_{n = 1}^\infty$ converges, and it {\bf diverges} otherwise.
+ \end{Definition}
+ \end{frame}
+ 
+ \begin{frame}[t]
+ \frametitle{Example}
+ \begin{Example}
+ For what values of $r$ does the geometric series $\displaystyle\sum_{k = 1}^\infty r^{k - 1}$ converge?
+ \end{Example}
+ \end{frame}
+ 
+ \begin{frame}
+ \frametitle{Geometric Series}
+ The geometric series is extremely important in finance. Remember these formulas. 
+ $$
+ \sum_{k= 1}^n a r^{k -1} = \frac{a(1 - r^n)}{1 - r}
+ $$
+ and
+ $$
+  \sum_{k = 1}^\infty a r^{k -1} =\begin{cases} \frac{a}{1 - r}, & |r| < 1\\ DNE,	& |r| \geq 1\end{cases}
+ $$
+  \end{frame}
+  
+  \begin{frame}[t]
+   \frametitle{Convergent Series}
+   \begin{Example}
+   Show $\displaystyle\sum_{k = 1}^\infty \frac{1}{k(k + 1)}$ converges. 
+   \end{Example}
+  
+  \end{frame}
+ 
+ \begin{frame}
+ \frametitle{Divergence Test}
+ \begin{itemize}
+\item If $\displaystyle\lim_{k\to\infty} a_k \neq 0$, then $\displaystyle\sum_{k = 1}^\infty a_k$ diverges.  
+\item If $\displaystyle\lim_{k\to\infty} a_k =  0$, then $\displaystyle\sum_{k = 1}^\infty a_k$ may or may not converge.
+\end{itemize}
+ \end{frame}
+ 
+ \begin{frame}
+ \frametitle{Property of Series}
+ 
+ \begin{Theorem} 
+ Suppose that $\displaystyle\sum_{k = 1}^\infty a_k$ and $\displaystyle\sum_{k = 1}^\infty b_k$ converge. For any real constants $\alpha$ and $\beta$
+ $$
+ \sum_{k = 1}^\infty\left( \alpha a_k + \beta b_k\right) =   \alpha \sum_{k = 1}^\infty a_k + \beta \sum_{k = 1}^\infty b_k .
+ $$
+  \end{Theorem} 
+ \end{frame}
+ 
+ 
+ \begin{frame}
+ \frametitle{Dominating Series}
+ 
+ \begin{Theorem}
+ If a series $\displaystyle\sum_{k = 1}^\infty b_k$ dominates a series $\displaystyle\sum_{k = 1}^\infty a_k$ in the sense that for all sufficiently large $k$, $|a_k| \leq b_k$, then converge of $\displaystyle\sum_{k = 1}^\infty b_k$ implies converge of $\displaystyle\sum_{k = 1}^\infty a_k$.
+ \end{Theorem}
+ 
+ \end{frame}
+ 
+ \begin{frame}[t]
+  \frametitle{Dominating Series Example}
+  \begin{Example} 
+  Show that the series $\displaystyle\sum_{k = 1}^\infty \frac{\sin k}{2^k}$ converges.
+  \end{Example}
+ 
+ \end{frame}
+ 
+ \begin{frame}
+  \frametitle{Integral Test}
+  
+  \begin{Theorem}[Integral Test]
+\begin{enumerate}
+\item[(a)] If $|a_k| \leq f(x)$ for all sufficiently large $k$ and all $x$ in the interval $(k - 1, k]$, then convergence of $\displaystyle\int_0^\infty f(x)\ dx$ implies convergence of $\displaystyle\sum_{k = 1}^\infty a_k$.
+\item[(b)] If $|f(x)| \leq a_k$ for all sufficiently large $k$ and all $x$ in the interval $[k, k+1)$ then diverges of $\displaystyle\int_0^\infty f(x)\ dx$ implies divergence of $\displaystyle\sum_{k = 1}^\infty a_k$
+\end{enumerate}
+\end{Theorem}
+  
+  \end{frame}
+  
+  \begin{frame}[t]
+  \frametitle{Example (p-Series)}
+  \begin{Example}
+  Prove that $\displaystyle\sum_{k = 1}^\infty \frac{1}{k^p}$ converges for $p > 1$ and diverges for $p\leq 1$.
+  \end{Example}
+  
+  \end{frame}
+  
+  \begin{frame}
+  \frametitle{Alternating Series Test}
+  
+  \begin{Theorem} 
+Suppose the alternating series $\displaystyle\sum_{k = 1}^\infty (-1)^{k + 1} b_k$ is such that
+  $$
+  b_k \geq 0 \qquad\text{and}\qquad b_{k + 1} \leq b_k
+  $$
+ for sufficiently large $k$. Then the series converges if $\displaystyle\lim_{n\to\infty} b_k = 0$.
+  \end{Theorem}
+  \end{frame}
+   
+  \begin{frame}[t]
+ \frametitle{Alternating Series Test Example}
+ \begin{Example}
+ Show that the harmonic series $\displaystyle\sum_{k = 1}^\infty \frac{(-1)^{k + 1}}{k}$ converges.
+ \end{Example}
+ 
+ \end{frame}
+ 
+ 
+ \begin{frame}
+  \frametitle{Absolutely and Conditionally Convergent Series}
+  
+  \begin{Definition}
+  A series $\displaystyle\sum_{k = 1}^\infty a_k$ is {\bf absolutely convergent} if $\displaystyle\sum_{k = 1}^\infty |a_k|$ converges. A series is {\bf conditionally convergent} if $\displaystyle\sum_{k = 1}^\infty a_k$ converges but $\displaystyle\sum_{k = 1}^\infty |a_k|$ does not.
+  \end{Definition}
+  For example, the harmonic series
+  $$
+  \sum_{k = 1}^\infty \frac{(-1)^{k + 1}}{k}
+  $$
+  is conditionally convergent but not absolutely. 
+  
+ \end{frame}
+ 
+ \begin{frame}
+   \frametitle{Ratio Test}
+   \begin{Theorem}
+   \begin{enumerate}
+   \item[(a)] If $\displaystyle\lim_{k\to\infty} \left|\frac{a_{k + 1}}{a_k}\right| = L < 1$, then the series $\displaystyle\sum_{k = 1}^\infty a_k$ is absolutely convergent.
+   \item[(b)] If $\displaystyle\lim_{n\to\infty}\left|\frac{a_{k + 1}}{a_k}\right| = L > 1$, then the series $\displaystyle\sum_{k = 1}^\infty a_k$  is divergent.
+   \item[(c)] If $\displaystyle\lim_{n\to\infty}\left|\frac{a_{k + 1}}{a_k}\right| = L = 1$, then the test fails.
+   \end{enumerate}
+   \end{Theorem}
+ \end{frame}
+ 
+ \begin{frame}[t]
+  \frametitle{Ratio Test Example} 
+  \begin{Example}
+What can be said about the convergence of $\displaystyle\sum_{k = 1}^\infty (-1)^k\frac{k!}{k^k}$?
+\end{Example}
+\end{frame}
+
+\subsection{Power Series}
+
+\begin{frame}
+\frametitle{Power Series}
+\begin{Definition}
+A {\bf power series} centered at $c$ is a series of the form
+$$
+\sum_{k = 0}^\infty a_k (x - c)^k.
+$$
+If the series converges for $|x - c| < R$ and diverges for $|x - c| > R$, then $R$ is the {\bf radius of convergence}. The {\bf interval of convergence} $I$ is the set of all $x$ values where the series converges. 
+\end{Definition}
+{\bf Remark:} We assume $0^0 = 1$ within our power series, so the power series always converges at $x = c$.
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Power Series Example}
+\begin{Example}
+Find the radius and interval of convergence of the series $\displaystyle\sum_{k = 0}^\infty \frac{(-3)^k (x + 1)^k}{\sqrt{k + 1}}$.
+\end{Example}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Differentiation and Integration of Power Series}
+\begin{Theorem}
+If the power series $f(x) = \displaystyle\sum_{k = 0}^\infty a_k (x - c)^k$ has radius of convergence $R > 0$, then both
+\begin{enumerate}
+\item[(a)] $\displaystyle f\ ' (x) = \sum_{k = 1}^\infty k a_k (x - c)^{k - 1}$ and
+\item[(b)] $\displaystyle\int f(x)\ dx = C + \sum_{k = 0}^\infty a_k \frac{(x - c)^{k + 1}}{k + 1}$
+\end{enumerate}
+have radii of convergence $R$.
+\end{Theorem}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Differentiation of Power Series Example}
+\begin{Example}
+$\displaystyle\sum_{k = 1}^\infty \frac{k}{1.10^k}$ = 
+\end{Example}
+\end{frame}
+
+\begin{frame}
+\frametitle{Taylor's Theorem}
+\begin{Theorem}
+Suppose
+$$
+f(x) = \sum_{k = 0}^\infty a_k (x - c)^k\qquad\text{for}\qquad |x - c| < R.
+$$
+Then
+$$
+a_k = \frac{f\ ^{(k)}(c)}{k!}.
+$$
+\end{Theorem}
+\end{frame}
+
+\begin{frame}
+\frametitle{Popular Taylor Series Centered at Zero}
+%\begin{multicols}{2}
+{\small
+\begin{itemize}
+\item $\displaystyle \frac{1}{1 - x} = \sum_{k = 0}^\infty x^k$ for $x\in (-1, 1)$
+\item $\displaystyle e^x = \sum_{k = 0}^\infty \frac{x^k}{k!}$ for $x\in\mathbb{R}$
+\item $\displaystyle\sin x = \sum_{k = 0}^\infty (-1)^k \frac{x^{2k +1}}{(2k + 1)!}$ for $x\in\mathbb{R}$
+\item $\displaystyle\cos x = \sum_{k = 0}^\infty (-1)^k \frac{x^{2k}}{(2k)!}$ for $x\in\mathbb{R}$
+\item $\displaystyle\arctan x = \sum_{k = 0}^\infty (-1)^k \frac{x^{2k + 1}}{2k+ 1}$ for $x\in [-1, 1]$
+\end{itemize}
+}
+%\end{multicols}
+
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Taylor's Theorem Example}
+\begin{Example}
+Prove $\displaystyle\arctan x = \sum_{k = 0}^\infty (-1)^k \frac{x^{2k + 1}}{2k+ 1}$ for $x\in [-1, 1]$.
+\end{Example}
+\end{frame}
+
+%\begin{frame}[t]
+%\frametitle{Taylor's Theorem Example}
+%\begin{Example}
+%Find a power series, centered at 0 for $\displaystyle\int_0^x \sin(t^2)\ dt$.
+%\end{Example}
+%\end{frame}
+
+\section{Time Value of Money}
+
+\begin{frame}
+\frametitle{Time Value of Money}
+
+For a time $t$ cash flow $C_t$ discounted at rate $r$, the {\it present value} is
+$$
+PV = \frac{C_t}{(1 + r)^t}.
+$$
+The time $T$ {\it future value} is
+$$
+FV_T = PV (1 + r)^T = C_t (1 + r)^{T- t}.
+$$
+\end{frame}
+
+\begin{frame}
+\frametitle{Compound Interest}
+\small 
+We assumed that interest is compounded once per unit of time. However, if it is compounded $n$ times the formulas become
+$$
+PV = \frac{C_t}{\left(1 + \frac{r}{n}\right)^{nt}}\qquad\text{and}\qquad FV_T = PV \left(1 + \frac{r}{n}\right)^{nT}.
+$$
+Since
+$$
+\lim_{n\to\infty} \left(1 + \frac{r}{n}\right)^{nt} = e^{rt}
+$$
+for continuous compounding (i.e. $n = \infty$) the formulas are
+$$
+PV = C_t e^{-rt} \qquad\text{and}\qquad PV_T = PV  e^{rT} = PV  e^{r(T - t)}
+$$
+\end{frame}
+
+\begin{frame}
+\frametitle{Multiple Cash Flows} 
+Typically we have a sequence of cash flows $C_0, C_1, C_2,\ldots, C_T$ the {\it net present value} of these cash flows discounted at the constant rate $r$ is
+$$
+NPV = C_0 + \frac{C_1}{1 + r} + \frac{C_2}{(1 + r)^2} + \ldots + \frac{C_n}{(1 + r)^T}.
+$$
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Time Value of Money Python Example}
+\small
+\begin{Example}
+Suppose cash flows are as shown in the table below.
+\begin{center}
+\begin{tabular}{| l | c c c c c |}
+\hline
+Time			&	0		&	1	&	2	&	3	&	4\\\hline
+Cash Flow	&	-100		&	50	&	20	&	70	&	10\\\hline
+\end{tabular}
+\end{center}
+Calculate the net present value given a continuously compounded discount rate of 5\%.
+\end{Example}
+\begin{multicols}{2}
+{
+\linespread{0.8}
+{\bf\small Solution.}  
+{\tiny
+\begin{verbatim*}
+# Import module
+import numpy as np
+
+# Record rate
+rate = 0.05
+
+# Record time of cash flows
+time = np.array([0, 1, 2, 3, 4])
+
+# Record cash flows
+cash_flows = np.array([-100, 50, 20, 70, 10])
+
+# Get the NPV
+NPV = np.sum(cash_flows * np.exp(-rate * time))
+
+print(f'The NPV of the cash flows is {NPV:.2f}.')
+\end{verbatim*}
+}}
+
+$NPV \approx 34.10$
+\end{multicols}
+\end{frame}
+
+
+\begin{frame}[t]
+\frametitle{Time Value of Money Example}
+\small
+\begin{Example}
+Jain borrows \$1,000,000 to purchase a house. The loan is for thirty years and her first payment is one month from when she initially borrows the money. If her annualized rate is 12\%, what will be her monthly payments? Ignore fees.
+\end{Example}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Growing Payments}
+Suppose 1 is payed at time $1$, and payments increase at a rate of $g$ each subsequent period until a final payment of $(1 + g)^{n -1}$ is made at time $n$. If cash flows are discounted at rate $r$, then the NPV of the cash flows is
+$$
+\frac{1 - \left(\frac{1 + g}{1 + r}\right)^n}{r - g}.
+$$
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Growing Payments Example}
+\tiny
+\begin{Example}
+Calculate the NPV of the series of end-of-year cash flows. Assume 
+\begin{itemize}
+\item \$100 is payed in the first year,
+\item each subsequent year payments increase by 5\%, 
+\item the final payment is made at the end of year ten, and
+\item the discount rate is 8\%.
+\end{itemize} 
+\end{Example}
+
+\end{frame}
+
+\end{document}

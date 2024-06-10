@@ -1,0 +1,17 @@
+\frametitle{Double Integral Python Example}
+\small
+\begin{Example}
+Use \texttt{scipy.integrate.dblquad} to verify the previous result for $\displaystyle\iint_{[0,1]\times[0, 1]} xy^2\ dA$.
+\end{Example}
+\begin{lstlisting}[language=Python]
+import numpy as np
+from scipy.integrate import dblquad
+
+# Define f
+f = lambda y, x: x * y**2
+
+# Integrate
+dblquad(f, 0, 1, 0, 1)[0]
+\end{lstlisting}
+The output is \texttt{0.16666666666666669} which agrees with our previous result.
+

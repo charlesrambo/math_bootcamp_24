@@ -1,0 +1,21 @@
+\frametitle{Time Value of Money Python Solution}
+\begin{lstlisting}[language=Python]
+# Import module
+import numpy as np
+
+# Record rate
+rate = 0.05
+
+# Record time of cash flows
+time = np.array([0, 1, 2, 3, 4])
+
+# Record cash flows
+cash_flows = np.array([-100, 50, 20, 70, 10])
+
+# Get the NPV
+NPV = np.sum(cash_flows * np.exp(-rate * time))
+
+print(f'The NPV of the cash flows is {NPV:.2f}.')
+\end{lstlisting}
+
+$NPV \approx 34.10$

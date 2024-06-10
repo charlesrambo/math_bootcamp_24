@@ -1,0 +1,20 @@
+\beamer@sectionintoc {1}{Linear Algebra}{4}{0}{1}
+\beamer@subsectionintoc {1}{1}{Vectors and Vector Spaces}{5}{0}{1}
+\beamer@subsectionintoc {1}{2}{Matrices}{15}{0}{1}
+\beamer@subsectionintoc {1}{3}{Linear Transformations}{22}{0}{1}
+\beamer@subsectionintoc {1}{4}{Coordinate and Matrix Representation}{27}{0}{1}
+\beamer@subsectionintoc {1}{5}{Inner Product Space}{32}{0}{1}
+\beamer@subsectionintoc {1}{6}{Norm and Distance}{35}{0}{1}
+\beamer@subsectionintoc {1}{7}{Projection}{44}{0}{1}
+\beamer@subsectionintoc {1}{8}{Determinants}{60}{0}{1}
+\beamer@subsectionintoc {1}{9}{Cramer's Rule}{65}{0}{1}
+\beamer@subsectionintoc {1}{10}{Eigenvectors and Eigenvalues}{67}{0}{1}
+\beamer@sectionintoc {2}{Multivariable Calculus}{80}{0}{2}
+\beamer@subsectionintoc {2}{1}{Partial Derivatives}{81}{0}{2}
+\beamer@subsectionintoc {2}{2}{Gradient Vector}{90}{0}{2}
+\beamer@subsectionintoc {2}{3}{Maximum and Minimum Values}{94}{0}{2}
+\beamer@subsectionintoc {2}{4}{Second Derivatives Test}{95}{0}{2}
+\beamer@subsectionintoc {2}{5}{Global Optimization}{100}{0}{2}
+\beamer@subsectionintoc {2}{6}{Lagrange Multipliers}{102}{0}{2}
+\beamer@subsectionintoc {2}{7}{Multiple Integrals}{105}{0}{2}
+\beamer@subsectionintoc {2}{8}{Change of Variables}{112}{0}{2}

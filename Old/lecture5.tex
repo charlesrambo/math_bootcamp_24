@@ -1,0 +1,294 @@
+\documentclass{beamer}
+\usepackage{pgffor,pgfmath}
+\usepackage{lipsum}
+\usepackage{multicol}
+\usetheme{ucla}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{tikz}
+\linespread{1.5}
+\usepackage{comment}
+
+\usepackage{amsmath, amsthm, amssymb, latexsym}
+
+%\newtheorem{definition}{Definition}
+
+\title{Lecture 5}
+\author{Charles Rambo}
+\institute{UCLA Anderson School of Management}
+\date{2023}
+\location{Los Angeles, California}
+
+% Turn on slide numbers:
+\showSlideNumber{}
+
+\AtBeginSection[]
+{
+    \begin{frame}
+        \frametitle{Table of Contents}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+
+\begin{document}
+
+\insertTitleSlide
+
+
+\section{Determinants}
+
+\begin{frame}
+\frametitle{Determinants of a $\boldsymbol 2\boldsymbol\times \boldsymbol2$ Matrix}
+Suppose 
+$$
+A = \left(\begin{array}{c c} a	&	b\\ c	& d\end{array}\right).
+$$
+Then
+$$
+\text{det}(A) = \left| \begin{array}{c c} a	&	b\\ c	& d\end{array}\right| = ad - bc.
+$$
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Determinants Example}
+\begin{Example}
+$\left|\begin{array}{c c} -1	&	-5\\	2	&	1\end{array}\right|=$
+\end{Example}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Determinants of an $\boldsymbol n\boldsymbol\times\boldsymbol n$ Matrix}
+Suppose $A$ is the $n\times n$ matrix
+$$
+A = \left(a_{ij} \right).
+$$
+Let $A_{ij}$ denote $A$ with the $i$-th row and $j$-th column removed. Then
+$$
+\text{det}(A) = \sum_{j = 1}^n (-1)^{i + j} a_{ij}\text{det}(A_{ij})
+$$
+for any choice of $i$ in $\{1, 2,\ldots, n\}$.
+
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Determinants Example}
+\begin{Example}
+$
+\left|\begin{array}{c c c} 2	&	1	&	2\\	0	&	3	&	-1\\	4	&	1	&	1\end{array}\right| = 
+$
+\end{Example}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Properties of Determinants} 
+{\tiny
+Let $A$ and $B$ be $n\times n$ matrices, $a_j$, $b$, and $c$ be $n\times 1$ vectors, and $\alpha$ and $\beta$ real numbers.
+\begin{enumerate}
+\item[(a)] If the columns of $A$ are linearly dependent, $\text{det}(A) = 0$.
+\item[(b)] If $A^{-1}$ exists, then $\text{det}(A^{-1}) = \frac{1}{\text{det}(A)}$.
+\item[(c)] $\text{det}(\alpha A) = \alpha^n \text{det}(A)$.
+\item[(d)] $\text{det}(A^T) = \text{det}(A)$
+\item[(e)] $\text{det}(AB) = \text{det}(A)\text{det}(B)$
+\item[(f)]  $\text{det}(I) = 1$
+
+\item[(g)] $
+\left| a_1\;	a_2\; \ldots a_{j - 1}\;	\alpha b  + \beta c\; a_{j + 1}  \ldots\;  a_n\right| = \alpha \left| a_1\; a_2\; \ldots a_{j - 1}\; b\; a_{j + 1} \ldots  a_n\right| + \beta \left| a_1\; a_2\;	 \ldots a_{j-1}\; c \; a_{j + 1} \ldots a_n\right|.
+$
+\item[(h)] $
+\left| a_1\;	a_2\; \ldots a_{j }\;	a_{j + 1}   \ldots\;  a_n\right|  = -\left| a_1\;	a_2\; \ldots a_{j + 1}\;	a_{j}   \ldots\;  a_n\right| 
+$
+\end{enumerate}
+Property (a) is very important. In \texttt{numpy}, there's \texttt{np.linalg.det} which computes the determinant. Since computers will be available to you in most circumstances the other properties are less important.}
+\end{frame}
+
+\subsection{Cramer's Rule}
+
+\begin{frame}
+\frametitle{Cramer's Rule}
+\small
+Consider a system of $n$ linear equations with $n$ unknowns
+$$
+ A x = b
+$$
+where $A$ is an $n\times n$ matrix with nonzero determinant and 
+$$
+x = \left(\begin{array}{c} x_1\\ x_2\\ \vdots\\ x_n\end{array}\right).
+$$
+Then 
+$$
+x_i = \frac{\text{det}(A_i)}{\text{det}(A)},
+$$
+where $A_i$ is the matrix formed by replacing the $i$-th column of $A$ by the column vector $b$.
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Cramer's Rule Example}
+\small
+\begin{Example}
+Solve the system 
+$$
+\begin{array}{r l}
+3x + 2y + 4z 	&= 1\\
+2x - y + z		&= 0\\
+x + 2y + 3z	&= 1.
+\end{array} 		
+$$
+\end{Example}
+
+
+\end{frame}
+
+
+
+\section{Eigenvectors and Eigenvalues}
+
+\begin{frame}
+\frametitle{Eigenvector and Eigenvalues}
+\begin{Definition}
+Let $V$ be a vector space and consider a linear transformation $T:V\to V$ with matrix representation $A$. An element $v$ in $V$ is an {\bf eigenvector} of $A$ if there exists a number $\lambda$ such that $Av = \lambda v$. If $v\neq O$, then $\lambda$ is called an {\bf eigenvalue} of $A$.
+\end{Definition}
+In \texttt{numpy}, we have \texttt{np.linalg.eig}. The function computes the eigenvalues and eigenvectors, respectively.
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Eigenvector and Eigenvalues}
+\begin{Example}
+{\small
+Let $A = \left(\begin{array}{c c} 1	&	1\\	1	&	1\end{array}\right)$. Show that $v_1 = \left(\begin{array}{c} 1\\	-1\end{array}\right)$ and $v_2 = \left(\begin{array}{c} 1\\ 1\end{array}\right)$ are eigenvectors. What are their eigenvalues?
+}
+\end{Example}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Eigenvectors and Kernels}
+If $v$ is an eigenvector of $A$ with eigenvalue $\lambda$, then
+$$
+Av = \lambda v\qquad\text{implies}\qquad (A - \lambda I)v = O.
+$$
+So, if $v\neq O$, then $\text{Ker}(A - \lambda I) \neq \{O\}$. This, implies $A - \lambda I$ has linearly dependent columns. Hence, $\text{det}(A - \lambda I) = 0$.
+
+\end{frame}
+
+\begin{frame}
+
+\begin{Definition}
+\frametitle{Characteristic Polynomial}
+For an $n\times n$ matrix $A$, the {\bf characteristic polynomial} of $A$ is
+$$
+p_A(\lambda) = \text{det}(A - \lambda I).
+$$
+\end{Definition}
+We can find the eigenvalues by finding the zeros of $p_A$. We can then plug the eigenvalues into $(A - \lambda I)x = O$ to find the corresponding eigenvectors.
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Using the Characteristic Polynomial}
+\begin{Example}
+Find the eigenvalues and eigenvectors of $A = \left(\begin{array}{c c} 1	&	0.5\\ 0.5	&	1\end{array}\right)$.
+\end{Example}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Diagonalizable Matrices}
+\begin{Definition}
+We say that a matrix $A$ is {\bf diagonalizable} if $V$ has a basis of eigenvectors of $A$.
+\end{Definition}
+\end{frame}
+
+\begin{frame}
+\frametitle{Diagonalizable Matrices Example}
+{
+\tiny
+In our previous example, we saw the eigenvectors of 
+$$
+A = \left(\begin{array}{c c} 1	&	0.5\\	0.5	&	1\end{array}\right),
+$$
+are
+$$
+v_1 = \left(\begin{array}{c} 1\\	-1\end{array}\right)\qquad\text{and}\qquad v_2 = \left(\begin{array}{c} 1\\ 1\end{array}\right).
+$$  
+These eigenvectors are linearly independent, so they form a basis for $\mathbb{R}^2$. As a result, $A$ is diagonalizable. In particular, we can use the basis $(v_1, v_2)$ for $\mathbb{R}^2$ and the change of basis formula to diagonalize $A$. Under the basis, $(v_1, v_2)$ the matrix representation of the linear transformation corresponding to $A$ is
+$$
+N^{-1}  A N= \left(\begin{array}{c c} 0.5	&	0\\	0	&	1.5\end{array}\right),
+$$
+where $N$ is the matrix which contains the basis elements $(v_1, v_2)$ as columns, i.e.
+$$
+N =  \left(\begin{array}{c c} 1	&	1\\ -1 & 1\end{array}\right) 
+$$
+Recall: $v_1$ has eigenvalue 0.5 and $v_2$ has eigenvalue $1.5$.
+}
+\end{frame}
+
+
+
+\begin{frame}[t]
+\frametitle{Eigenvectors and -values Example}
+\begin{Example}
+Suppose $A = \left(\begin{array}{c c} 1	&	2\\	3	&	2\end{array}\right)$. Find a basis of eigenvectors as well as their eigenvalues.
+\end{Example}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Eigenvectors and -values Python Example}
+\begin{Example}
+Suppose $A = \left(\begin{array}{c c c} 4	&	0	&	1\\	-2	&1	&	0\\	-2	&	0	& 1\end{array}\right)$. Find a basis of eigenvectors as well as their eigenvalues.
+\end{Example}
+
+{\bf Solution.}  
+{\tiny
+\begin{verbatim*}
+import numpy as np
+
+# Define matrix 
+A = np.array([[4, 0, 1], [-2, 1, 0], [-2, 0, 1]])
+
+# Get the eigenvalues and -vectors
+evals, evecs = np.linalg.eig(A)
+\end{verbatim*}
+}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Eigenvectors and -values Python Result}
+The output shows eigenvalues of 1, 3, and 2, and that \texttt{evecs} is
+\begin{center}
+\includegraphics[scale = 0.5]{ex7.png}
+\end{center}
+The first column is the eigenvector with eigenvalue 1, the second is the eigenvector with eigenvalue 3, and the last is the eigenvector with eigenvalue 2.
+\end{frame}
+
+\begin{frame}
+\frametitle{Symmetric Matracies}
+\begin{Definition}
+Suppose $V$ is an inner product space, and $T:V\to V$. Then $T$ is {\bf symmetric} if we have the relation
+$$
+\langle Tv, w\rangle = \langle v, Tw\rangle
+$$
+for all $v$ and $w$ in $V$. 
+\end{Definition}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Spectral Theorem}
+
+\begin{Theorem}[Spectral Theorem]
+Let $V$ be a finite dimensional non-trivial inner product space over the real numbers, and suppose $T:V\to V$ is a symmetric linear transformation with matrix representation $A$. Then $V$ has an orthogonal basis consisting of eigenvectors of $A$.
+\end{Theorem}
+
+
+\end{frame}
+
+
+
+\end{document}

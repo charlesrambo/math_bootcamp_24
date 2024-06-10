@@ -1,0 +1,6 @@
+\frametitle{Approximate Quadratic Variation Result}
+If we regenerate the graph with 100,000 steps the result is indistinguishable from the graph of $t$.
+\begin{figure}
+\centering
+\includegraphics[scale = 0.4]{\pathtoimages/ex4-6.png}
+\end{figure}
