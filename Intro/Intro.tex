@@ -5,6 +5,7 @@
 \usepackage{lipsum}
 \usepackage{multicol}
 \usepackage{listings}
+\usepackage{multirow}
 
 
 % Define a custom color
@@ -18,9 +19,7 @@
     basicstyle=\linespread{0.4}\tiny,
     breakatwhitespace=false,         
     breaklines=true,        
-    keepspaces=true,                 
-    numbers=false,       
-    numbersep=5pt,                  
+    keepspaces=true,                               
     showspaces=false,                
     showstringspaces=false,
     showtabs=false,                  
@@ -30,10 +29,13 @@
 % Use \lstset to make myStyle the global default
 \lstset{style=myStyle}
 
+
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{verbatim}
 \linespread{1.5}
+\usepackage{pgfplots}
+\usepackage{tikz}
 
 \usepackage{amsmath, amsthm, amssymb, latexsym}
 
@@ -41,38 +43,114 @@
 
 \newcommand{\pathtoimages}{/Users/charlesrambo/Desktop/Bootcamp24/Images}
 
-\title{Introduction}
+\title{UCLA Anderson Math Bootcamp}
 \author{Charles Rambo}
-\institute{UCLA Anderson School of Management}
+\institute{UCLA Anderson}
 \date{2024}
 \location{Los Angeles, California}
-
-% Turn on slide numbers:
-\showSlideNumber{}
-
-\AtBeginSection[]
-{
-    \begin{frame}
-        \frametitle{Table of Contents}
-        \tableofcontents[currentsection]
-    \end{frame}
-}
 
 
 \begin{document}
 \input{systempreamble}
 
-\insertTitleSlide
-
 \frame{\titlepage}
 
-\begin{frame}
+\begin{frame}[allowframebreaks]
 
 \frametitle{Table of Contents}
 \tableofcontents
 \end{frame}
 
+\section{About Me}
+
+\begin{frame}
+\begin{center}
+\Huge About Me
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{About Me}
+
+\begin{itemize}
+\item \email{charles.tutoring@gmail.com}
+\item \url{github.com/charlesrambo}
+\item \url{linkedin.com/in/charlesrambo}
+\end{itemize}
+Please email your questions to me at my gmail account. Also, please feel free to connect with me on LinkedIn!
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Education}
+
+MFE from UCLA in 2020\\
+
+BA in Mathematics from UC Berkeley in 2009
+\end{frame}
+
+\begin{frame}
+\frametitle{Experience}
+\small
+
+SSI Investment Management\\
+Portfolio Research Analyst (3 years)
+\begin{itemize}
+\item Firm specializes in convertible securities
+\item I do valuation, credit, equity, and portfolio construction from a quantitative perspective.
+\end{itemize}
+
+Rambo Tutoring (Self-Employed)\\
+Math tutor and author (10 years)
+\begin{itemize}
+\item Did tutoring for Precalculus, Calculus, linear algebra, differential equations, statistics, probability, and more!
+\item Wrote study material as well! Check out my stuff on Amazon.com!
+\end{itemize}
+\end{frame}
+
+\section{How the Course Works}
+
+\begin{frame}
+\begin{center}
+\Huge How the Course Works
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{How the Course Works}
+\begin{itemize}
+\item Videos emailed out
+\item Notes and homework posted at \url{github.com/charlesrambo/math_bootcamp_24}
+\item Grade of 70\% or better to pass
+\item No exams
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Homework}
+\small
+\begin{itemize}
+\item Can work in teams of up to four people
+\item Make sure everybody's name is on the homework when you submit
+\item Email homework solutions to me at \email{charles.tutoring@gmail.com}
+\item Homework will be math problems which require some programming
+\item Please submit as an html or pdf file; no screenshots, ipynb, or py files please
+\item I look over the code but I don't run it so more important to make things readable than runable
+\item Due dates posted on homework
+\item Three assignments and one make-up assignment if you missed one or did badly
+\end{itemize}
+\end{frame}
+
+
+
+
 \section{Python}
+
+\begin{frame}
+\begin{center}
+\Huge Python
+\end{center}
+\end{frame}
 
 \begin{frame}
 \frametitle{Python Installation}
@@ -110,11 +188,11 @@ Several popular modules (packages) are preinstalled in Anaconda.
 
 \frame{
 \frametitle{Package Installation} 
-To install a new package, go into Terminal, and type 
+To install a new module, go into Terminal, and type 
 \begin{center}
 {\tt pip install \ldots}
 \end{center}
-In this example, I'm upgrading pandas. Your Terminal will probably look different.
+In this example, I'm upgrading pandas. Your Terminal will probably look differently.
 \begin{center}
 \includegraphics[scale = 0.2]{\pathtoimages/pip.png}
 \end{center}
@@ -154,6 +232,9 @@ x_vals = np.linspace(-1, 2, 100)
 # Use list comprehension to get y-values
 y_vals = [f(x) for x in x_vals]
 
+# Automatically vectorized so this works too
+# y_vals = f(x_vals)
+
 # Generate the plot
 plt.plot(x_vals, y_vals)
 
@@ -167,7 +248,7 @@ plt.ylabel(r'$y$')
 plt.title(r'Graph of $y = x^2 + 1$')
 
 # Save the figure
-plt.savefig(r'[location on machine]')
+plt.savefig(path + r'ex0-1')
 
 # Display the plot
 plt.show()
@@ -180,9 +261,10 @@ plt.show()
 
 \begin{frame}
 \frametitle{Python Graphing Result}
-\begin{center}
-\includegraphics[scale = 0.5]{\pathtoimages/ex1.png}
-\end{center}
+\begin{figure}
+\centering
+\includegraphics[scale = 0.5]{\pathtoimages/ex0-1.png}
+\end{figure}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -211,21 +293,10 @@ minimize(f, x0 = [1], bounds = [(-1, 2)])
 \end{lstlisting}
 }
 The output is shown below. 
-{
-\linespread{0.8}
-\tiny
-\begin{verbatim*}
-fun: array([1.])
- hess_inv: <1x1 LbfgsInvHessProduct with dtype=float64>
-      jac: array([0.])
-  message: b'CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_<=_PGTOL'
-     nfev: 8
-      nit: 2
-   status: 0
-  success: True
-        x: array([-2.20890595e-10])
-\end{verbatim*}
-}
+\begin{figure}
+\centering
+\includegraphics[scale = 0.5]{\pathtoimages/opt.png}
+\end{figure}
 \end{frame}
 
 \end{document}
