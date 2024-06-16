@@ -197,7 +197,7 @@ Suppose $p > 0$.
 \end{Theorem}
 \end{frame}
 
-\frame{
+\begin{frame}[t]
 \frametitle{Python Example}
 \begin{Example}
 Define
@@ -208,7 +208,7 @@ f(x) = \begin{cases}
 $$
 Graph $f$ in Python to see that $\displaystyle\lim_{x\to 0} f(x)$ does not exist.
 \end{Example}
-}
+\end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Python Example Cont.}
@@ -375,7 +375,7 @@ $$
 where $h > 0$.
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 \frametitle{Python Example}
 \begin{Example}
 Use Python to graph $f$ and $f'$ on the interval $[-2, 2]$, where
@@ -486,7 +486,7 @@ Suppose $a > 0$.
 \end{multicols}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 \frametitle{Derivative Example}
 \begin{Example}
 $$
@@ -869,7 +869,7 @@ Use uniform partitions and right endpoints to find $\displaystyle\int_0^1 x^2\ d
 \frametitle{Python Code}
 
 \begin{lstlisting}[language=Python]
-# Define Reimann sum
+# Define Riemann sum
 def riemann_sum(f, P, pts):
     
     # Sort values
@@ -926,7 +926,7 @@ $$
 \end{Definition}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 \frametitle{Python Example}
 \begin{Example}
 Use \texttt{pandas} to create a data frame of Riemann sums with left endpoints, midpoints, and right endpoints, and uniform partitions to approximate $\displaystyle\int_0^\infty e^{-x^2/2}\ dx$. Consider $n = 10, 50, 100, 500,$ and 1000.
@@ -1040,7 +1040,7 @@ Suppose $f$ is continuous on the closed interval $[a, b]$. Then
 \end{frame}
 
 \begin{frame}[t]
-\frametitle{Example}
+\frametitle{Fundamental Theorem of Calculus Example}
 
 \begin{Example}
 $\displaystyle \int_0^2 \max\{x, 1\}\ dx = $
@@ -1147,7 +1147,7 @@ Solve the differential equation
 $$
 \frac{dy}{dt} = \frac{ty + 3t}{t^2 + 1}
 $$
-subject to the initial condition $y(2) = 2$.
+subject to the initial condition $y(0) = 2$.
 \end{Example}
 \end{frame}
 
@@ -1203,7 +1203,7 @@ when $\displaystyle(a_n)_{n = 1}^\infty$ converges to $a$. If $\displaystyle(a_n
 \end{Definition}
 \end{frame}
 
-\frame{
+\begin{frame}[t]
 \frametitle{Sequences Example}
 \begin{Example}
 Determine which of the following sequences converge/diverge. If the sequence converges, find its limit.
@@ -1214,9 +1214,9 @@ Determine which of the following sequences converge/diverge. If the sequence con
 \item[(d)] $\displaystyle d_n = 1 + \frac{(-1)^n}{n}$
 \end{enumerate} 
 \end{Example}
-}
+\end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}[t]
 \frametitle{Python Sequences Example}
 \begin{Example}
 Use Python to graph the four sequences in the previous example. Graph them on separate subplots, and for the sequences that converge use horizontal lines to show their respective limits.
@@ -1233,7 +1233,7 @@ Use Python to graph the four sequences in the previous example. Graph them on se
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Use latex
+# Use LaTeX
 plt.rcParams['text.usetex'] = True
 
 # Use Seaborn style
@@ -1252,14 +1252,14 @@ a_lim, d_lim = 0, 1
 n_vals = np.arange(1, 21)
 
 # Get the sequence values
-a_vals = [a(n) for n in n_vals]
-b_vals = [b(n) for n in n_vals]
-c_vals = [c(n) for n in n_vals]
-d_vals = [d(n) for n in n_vals]
+# Functions already vectorized
+a_vals = a(n_vals)
+b_vals = b(n_vals)
+c_vals = c(n_vals)
+d_vals = d(n_vals)
 
 # Set up subplots
 fig, ax = plt.subplots(2, 2, sharey = True, figsize = (10, 6))
-
 
 # Plot a_n and its limit
 ax[0, 0].scatter(n_vals, a_vals)
@@ -1286,7 +1286,7 @@ ax[1, 1].set_ylabel(r'$d_n$')
 plt.suptitle(r'Sequence Plots')
 
 # Save the figure
-plt.savefig(path + r'Images/ex1-4.png')
+plt.savefig(path + r'ex1-4.png')
 
 plt.show()
 \end{lstlisting}
@@ -1314,7 +1314,7 @@ $$
 \begin{itemize}
 \item[(a)] The sequence $\displaystyle(a_n)_{n = 1}^\infty$ converges to $a$ in  $\mathbb{R}$ if and only if for every $\epsilon > 0$, we have $a_n$ in the interval $(a - \epsilon, a + \epsilon)$ for all but finitely many $n$.
 \item[(b)] If $\displaystyle(a_n)_{n = 1}^\infty$ converges to both $a$ and $b$, then $a = b$.
-\item[(c)] If $\displaystyle(a_n)_{n = 1}^\infty$ converges, then it is bounded. That is, convergence of $\displaystyle(a_n)_{n = 1}^\infty$ implies there exists a real number $N$ such that $|a_n| \leq N$ for all $n$.
+\item[(c)] If $\displaystyle(a_n)_{n = 1}^\infty$ converges, then it is bounded. That is, convergence of $\displaystyle(a_n)_{n = 1}^\infty$ implies there exists a real number $B$ such that $|a_n| \leq B$ for all $n$.
 \end{itemize}
 \end{Theorem}
 }
@@ -1378,6 +1378,22 @@ Consider a series $\displaystyle S = \sum_{k = 1}^\infty a_k$. Its {\bf $\boldsy
  $$
   \end{frame}
   
+  \begin{frame}
+  \frametitle{Partial Fraction Decomposition}
+\begin{itemize}
+\item $\dfrac{a x + b}{(x - c)(x - d)} = \dfrac{A}{x - c} + \dfrac{B}{x - d},\quad c \neq d.$
+\item $\dfrac{ax + b}{(x - c)^2} = \dfrac{A}{x - c} + \dfrac{B}{(x - c)^2}.$
+\end{itemize}
+  \end{frame}
+  
+ \begin{frame}[t]
+ \frametitle{Partial Fraction Decomposition Example}
+ \begin{Example}
+ Express $\dfrac{x - 2}{x(x - 3)}$ in partial fractions.
+ \end{Example}
+
+  \end{frame}
+  
   \begin{frame}[t]
    \frametitle{Convergent Series}
    \begin{Example}
@@ -1410,7 +1426,7 @@ Consider a series $\displaystyle S = \sum_{k = 1}^\infty a_k$. Its {\bf $\boldsy
  \frametitle{Dominating Series}
  
  \begin{Theorem}
- If a series $\displaystyle\sum_{k = 1}^\infty b_k$ dominates a series $\displaystyle\sum_{k = 1}^\infty a_k$ in the sense that for all sufficiently large $k$, $|a_k| \leq b_k$, then converge of $\displaystyle\sum_{k = 1}^\infty b_k$ implies converge of $\displaystyle\sum_{k = 1}^\infty a_k$.
+ If a series $\displaystyle\sum_{k = 1}^\infty b_k$ dominates a series $\displaystyle\sum_{k = 1}^\infty a_k$ in the sense that for all sufficiently large $k$, $|a_k| \leq b_k$, then convergence of $\displaystyle\sum_{k = 1}^\infty b_k$ implies convergence of $\displaystyle\sum_{k = 1}^\infty a_k$.
  \end{Theorem}
  
  \end{frame}
@@ -1427,9 +1443,10 @@ Consider a series $\displaystyle S = \sum_{k = 1}^\infty a_k$. Its {\bf $\boldsy
   \frametitle{Integral Test}
   
   \begin{Theorem}[Integral Test]
+ Suppose $f$ is continuous and $f(k) = a_k$.
 \begin{enumerate}
-\item[(a)] If $|a_k| \leq f(x)$ for all sufficiently large $k$ and all $x$ in the interval $(k - 1, k]$, then convergence of $\displaystyle\int_0^\infty f(x)\ dx$ implies convergence of $\displaystyle\sum_{k = 1}^\infty a_k$.
-\item[(b)] If $|f(x)| \leq a_k$ for all sufficiently large $k$ and all $x$ in the interval $[k, k+1)$ then diverges of $\displaystyle\int_0^\infty f(x)\ dx$ implies divergence of $\displaystyle\sum_{k = 1}^\infty a_k$.
+\item[(a)] If $|a_k| \leq f(x)$ for all sufficiently large $k$ and all $x$ in the interval $(k - 1, k]$, then convergence of $\displaystyle\int_1^\infty f(x)\ dx$ implies convergence of $\displaystyle\sum_{k = 1}^\infty a_k$.
+\item[(b)] If $|f(x)| \leq a_k$ for all sufficiently large $k$ and all $x$ in the interval $[k, k+1)$ then diverges of $\displaystyle\int_1^\infty f(x)\ dx$ implies divergence of $\displaystyle\sum_{k = 1}^\infty a_k$.
 \end{enumerate}
 \end{Theorem}
   
@@ -1519,7 +1536,7 @@ Find the radius and interval of convergence of the series $\displaystyle\sum_{k 
 \begin{Theorem}
 If the power series $f(x) = \displaystyle\sum_{k = 0}^\infty a_k (x - c)^k$ has radius of convergence $R > 0$, then both
 \begin{enumerate}
-\item[(a)] $\displaystyle f' (x) = \sum_{k = 1}^\infty k a_k (x - c)^{k - 1}$ and
+\item[(a)] $\displaystyle f'(x) = \sum_{k = 1}^\infty k a_k (x - c)^{k - 1}$ and
 \item[(b)] $\displaystyle\int f(x)\ dx = C + \sum_{k = 0}^\infty a_k \frac{(x - c)^{k + 1}}{k + 1}$
 \end{enumerate}
 have radii of convergence $R$.
@@ -1587,16 +1604,16 @@ PV = \frac{C_t}{(1 + r)^t}.
 $$
 The time $T$ {\it future value} is
 $$
-FV_T = PV (1 + r)^T = C_t (1 + r)^{T- t}.
+FV_T = PV\cdot (1 + r)^T = C_t\cdot (1 + r)^{T- t}.
 $$
 \end{frame}
 
 \begin{frame}
 \frametitle{Compound Interest}
 \small 
-We assumed that interest is compounded once per unit of time. However, if it is compounded $n$ times the formulas become
+We assumed that interest is compounded once per unit of time. However, if it is compounded $n$ times per unit of time the formulas become
 $$
-PV = \frac{C_t}{\left(1 + \frac{r}{n}\right)^{nt}}\qquad\text{and}\qquad FV_T = PV \left(1 + \frac{r}{n}\right)^{nT}.
+PV = \frac{C_t}{\left(1 + \frac{r}{n}\right)^{nt}}\qquad\text{and}\qquad FV_T = PV\cdot \left(1 + \frac{r}{n}\right)^{nT}.
 $$
 Since
 $$
@@ -1604,23 +1621,22 @@ $$
 $$
 for continuous compounding (i.e. $n = \infty$) the formulas are
 $$
-PV = C_t e^{-rt} \qquad\text{and}\qquad PV_T = PV  e^{rT} = PV  e^{r(T - t)}
+PV = C_t e^{-rt} \qquad\text{and}\qquad FV_T = PV\cdot  e^{rT} = C_t\cdot  e^{r(T - t)}
 $$
 \end{frame}
 
 \begin{frame}
 \frametitle{Multiple Cash Flows} 
-Typically we have a sequence of cash flows $C_0, C_1, C_2,\ldots, C_T$ the {\it net present value} (NPV) of these cash flows discounted at the constant rate $r$ is
+Suppose we have a sequence of cash flows $C_0, C_1, C_2,\ldots, C_T$, where the subscript denotes the time of the cash flow, the {\it net present value} (NPV) of these cash flows discounted at the constant rate $r$ is
 $$
 NPV = C_0 + \frac{C_1}{1 + r} + \frac{C_2}{(1 + r)^2} + \ldots + \frac{C_n}{(1 + r)^T}.
 $$
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 \frametitle{Time Value of Money Python Example}
 \small
 \begin{Example}
-Suppose cash flows are as shown in the table below.
 \begin{center}
 \begin{tabular}{| l | c c c c c |}
 \hline
