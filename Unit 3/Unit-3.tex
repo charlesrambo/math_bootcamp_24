@@ -194,7 +194,7 @@ Suppose there are $n$ objects distributed among $m$ sets, where $n \geq m$. Then
 \begin{frame}[t]
 \frametitle{The Pigeonhole Principle Example}
 \begin{Example}
-Suppose we have a set of $n + 1$ element. Show that we can always select two elements $a$ and $b$ such that $a - b$ is divisible by $n$.
+Suppose we have a set of $n + 1$ whole numbers. Show that we can always select two elements $a$ and $b$ such that $a - b$ is divisible by $n$.
 \end{Example}
 
 \end{frame}
@@ -269,7 +269,7 @@ We typically call $\Omega$ the {\bf sample space}. The elements of $\mathcal{F}$
 \end{Definition}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 \frametitle{Probability Example}
 \begin{Example}
 Consider the sample space $[0, 1]\times [0, 1]$. We define $P:\mathcal{F}\to [0, 1]$ such that $P(E) = \text{area}(E)$. In this cases, we would have 
@@ -425,9 +425,8 @@ There are three types of random variables: {\it discrete} random variables, {\it
 State whether the random variables are discrete, continuous, or mixed.
 \begin{enumerate}
 \item[(a)] A coin is tossed ten times. The random variable $X$ is the number of tails.
-\item[(b)] The random variable $Y$ measures the number of years until a firm defaults on its debt.
-\item[(c)] $Z(X) = \begin{cases} 1 - X, &0\leq X < 1/2\\ 5, 	&1/2\leq X \leq 1\end{cases}$
-where $X$ is a continuous random variables with range $[0, 1]$.
+\item[(b)] The random variable $Y$ measures the time until a firm defaults on its debt.
+\item[(c)] The random variable $Z$ measures the time, in years, until a firm defaults on a particular bond that matures in $T$ years. If the firm meets all of its payment obligations for the bond, $Z$ is given a value of $T$.
 \end{enumerate}
 \end{Example}
 
@@ -456,7 +455,7 @@ A coin is flipped three times. Let the random variable $X$ denote the number of 
 \begin{frame}
 \frametitle{Cumulative Distribution Function}
 \begin{Definition}
-For a discrete random variable $X$, we define the {\bf cumulative distribution function} or {\bf cdf} by the equation
+For a discrete random variable $X$, we define the {\bf cumulative distribution function} or {\bf cdf} as
 $$
 F(x) = P(X\leq x) = \sum_{t \leq x} P(X = t).
 $$
@@ -535,7 +534,7 @@ $$
 \frametitle{Poisson Distribution Example}
 \tiny
 \begin{Example}
-After graduation from the MFE program, you become a famous and successful portfolio manager. To help younger men and women succeed in finance, you begin writing a memoir of your life. In the first draft of your book, there are an average of fifteen spelling errors per page. Suppose that the number of errors per page follows a Poisson distribution. What is the probability of having no errors on a page?
+After graduation from the MFE program, you become a famous and successful portfolio manager. To help younger men and women succeed in finance, you begin writing a memoir of your life. In the first draft of your book, there are an average of three spelling errors per page. Suppose that the number of errors per page follows a Poisson distribution. What is the probability of having no errors on a page?
 \end{Example}
 
 \end{frame}
@@ -599,6 +598,7 @@ where $f$ is the pdf of $X$.
 \frametitle{Properties of CDFs}
 \small
 The cumulative distribution function $F$ of a continuous random variable $X$ satisfies the following properties.
+\begin{multicols}{2}
 \begin{enumerate}
 \item[(a)] $0 \leq F(x) \leq 1$
 \item[(b)] If $x_1 < x_2$, then $F(x_1) < F(x_2)$
@@ -608,6 +608,8 @@ The cumulative distribution function $F$ of a continuous random variable $X$ sat
 \item[(f)] $F$ is continuous 
 \item[(g)] $F'(x) = f(x)$ wherever the derivative exists
 \end{enumerate}
+\end{multicols}
+All of these, except (g), hold for discrete random variables as well.
 \end{frame}
 
 \begin{frame}[t]
@@ -624,7 +626,7 @@ Suppose a random variable $X$'s pdf is proportional to $x^2$ on the interval $[-
 \begin{Definition}
 The {\bf continuous uniform distributions} describes an experiment where there is an arbitrary outcome that lies between certain bounds. The bounds are defined by the parameters $a$ and $b$, which are the minimum and maximum values. The interval can either be closed or open. The distribution is often abbreviated $\mathcal{U}(a, b)$. 
 \end{Definition}
-The pdf and cdf of the continuous uniform distribution are
+The pdf and cdf of the continuous uniform distribution on $[a, b]$ are
 $$
 f(x) = \begin{cases} \displaystyle\frac{1}{b - a},	&	a\leq x\leq b\\ 0, & \text{otherwise}\end{cases}\qquad\text{and}\qquad F(x) = \begin{cases} 0,	&	x < a\\ \displaystyle\frac{x - a}{b - a}, & 	a\leq x\leq b\\	1,	&	x > b.\end{cases}
 $$
@@ -660,7 +662,7 @@ Use Python to illustrate how $\mu$ and $\sigma$ affect the graph of the pdf.
 import numpy as np, matplotlib.pyplot as plt
 from scipy.stats import norm
 
-# Use latex
+# Use LaTeX
 plt.rcParams['text.usetex'] = True
 
 # Use Seaborn style
@@ -910,7 +912,7 @@ The standardized third moment is the {\bf skew}.
 \end{Definition}
 \begin{figure}
 \centering
-\includegraphics[scale = 0.15]{\pathtoimages/skew.png}
+\includegraphics[scale = 0.17]{\pathtoimages/skew.png}
 \end{figure}
 
 \end{frame}
@@ -1053,7 +1055,7 @@ P\Big((X, Y)\in C\Big) = \iint_C f_{XY}(x, y)\ dA.
 $$
 The function $f_{XY}(x, y)$ is called the {\bf joint probability density function} of $X$ and $Y$, and the {\bf joint cumulative distribution function} is
 $$
-F(x, y) = \int_{-\infty}^y\int_{-\infty}^x f(s, t)\ dsdt.
+F(x, y) = \int_{-\infty}^y\int_{-\infty}^x f(s, t)\ ds\,dt.
 $$
 \end{Definition}
 
@@ -1065,11 +1067,10 @@ $$
 \small
 Suppose
 $$
-f_{XY}(x, y) = \begin{cases} \frac{1}{4},	&	x, y \in [-1, 1] &0, &	\text{otherwise.}\end{cases}
+f_{XY}(x, y) = \begin{cases} \frac{1}{2},	&	-1\leq x \leq y \leq 1\\ 0, &	\text{otherwise.}\end{cases}
 $$
 Then $P(2X - Y > 0) = $
 \end{Example}
-
 \end{frame}
 
 \begin{frame}
@@ -1094,7 +1095,7 @@ $$
 \begin{Example}
 The joint pdf of $X$ and $Y$ is given by
 $$
-f_{XY}(x, y) = \begin{cases} 3(x + y),&	0\leq x +y \leq 1, 0 \leq x, y\\ 0, & \text{otherwise.}\end{cases}	
+f_{XY}(x, y) = \begin{cases} 3(x + y),&	x +y \leq 1, x,y \geq  0\\ 0, & \text{otherwise.}\end{cases}	
 $$
 Are $X$ and $Y$ independent? 
 \end{Example}
@@ -1150,7 +1151,7 @@ $$
 \end{frame}
 
 \begin{frame}[t]
-\frametitle{Covariance Example}
+\frametitle{Covariance Example 1}
 \tiny
 \begin{Example}
 Consider $X$ and $Y$ with joint pdf
@@ -1161,6 +1162,15 @@ Calculate the covariance of $X$ and $Y$. Hint: $E[X] = E[Y] =  \frac{2}{3}.$
 \end{Example}
 
 \end{frame}
+
+\begin{frame}[t]
+\frametitle{Covariance Example 2}
+\begin{Example}
+Suppose $X\sim{\mathcal{U}(-1, 1)}$. Calculate the covariance between $X$ and $X^2$.
+\end{Example}
+
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Properties of Covariance}
@@ -1182,16 +1192,72 @@ $$
 \rho(X, Y) = \frac{\text{Cov}(X, Y)}{\sigma_X\sigma_Y}.
 $$
 \end{Definition}
+In Python the correlation between two variables can be calculated using \texttt{np.corrcoef}. See the \href{https://numpy.org/doc/stable/reference/generated/numpy.corrcoef.html}{NumPy documentation} for more details.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Correlation Example Python Code}
+\begin{multicols}{2}
+\begin{lstlisting}[language=Python]
+# Import modules
+import numpy as np, matplotlib.pyplot as plt
+from scipy.stats import norm
+
+# Use LaTeX
+plt.rcParams['text.usetex'] = True
+
+# Use Seaborn style
+plt.style.use('seaborn')
+
+# Generate standard normals
+Z = norm.rvs(size = 100)
+
+# List correlations
+rho_vals = [-0.9, -0.75, -0.25, 0.25, 0.75, 0.9]
+
+# Set up subplots
+fig, ax = plt.subplots(2, 3, sharey = True, 
+                       figsize = (12, 10), dpi = 125)
+
+for i, rho in enumerate(rho_vals):
+    
+    # Get X and Y values
+    X = np.linspace(0, 1, len(Z))
+    Y = rho * X + np.sqrt(1 - rho**2) * Z
+    
+    # Get row and column
+    row, col = i//3, i%3
+    
+    # Draw scatter plot
+    ax[row, col].scatter(X, Y)
+    
+    # Draw plot of underlying relationship
+    ax[row, col].plot(X, rho * X, color = 'red')
+    
+    # Add title to subplot
+    ax[row, col].set_title(r'$\rho =$ ' + str(rho))
+    
+    # Add labels for x and y axes
+    ax[row, col].set_xlabel(r'$X$')
+    ax[row, col].set_ylabel(r'$Y$')
+    
+# Save the figure
+plt.savefig(path + r'ex3-3.png')
+
+plt.show()
+\end{lstlisting}
+\end{multicols}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Correlation Example Result}
+\begin{figure}
+\centering
+\includegraphics[scale = 0.3]{\pathtoimages/ex3-3.png}
+\end{figure}
 
 \end{frame}
 
-\begin{frame}[t]
-\frametitle{Correlation Example}
-\begin{Example}
-Suppose $X\sim{\mathcal{U}(-1, 1)}$. Calculate the correlation between $X$ and $X^2$.
-\end{Example}
-
-\end{frame}
 
 \begin{frame}
 \frametitle{Variance of Sum}
@@ -1346,23 +1412,25 @@ plt.xlabel(r'$\sigma$', fontsize = 15)
 plt.ylabel(r'$\mu$', fontsize = 15)
 
 # Save the figure
-plt.savefig(path + r'ex3-3.png')
+plt.savefig(path + r'ex3-4.png')
 
 plt.show()
 
-print(f'The minimum variance portfolio has rspective weights in', 
-      f'assets 1 and 2 of {w_min_var:.3f} and {1 - w_min_var:.3f}')
-\end{lstlisting}
+print(r'The minimum variance portfolio has respective weights in', 
+      r'assets 1 and 2 of', 
+      f'{100 * w_min_var:.1f}% and {100 - 100 * w_min_var:.1f}%.',
+     f'The standard deviation of the minimum variance portfolio is {100 * port_sigma(w_min_var):.1f}%.')
+      \end{lstlisting}
 
 \end{frame}
 
 
 \begin{frame}
 \frametitle{Portfolio Construction Result}
-The minimum variance portfolio has respective weights in assets 1 and 2 of 19.8\% and 80.2\%.
+The minimum variance portfolio has respective weights in assets 1 and 2 of 19.8\% and 80.2\%. The standard deviation of the minimum variance portfolio is 5.6\%.
 \begin{figure}
 \centering
-\includegraphics[scale = 0.4]{\pathtoimages/ex3-3.png}
+\includegraphics[scale = 0.4]{\pathtoimages/ex3-4.png}
 \end{figure}
 \end{frame}
 
@@ -1458,11 +1526,11 @@ plt.rcParams['text.usetex'] = True
 plt.style.use('seaborn')
 
 # Choose n-values and set number of trials
-n_vals, trials = [100, 500, 1000, 10000], 100_000
+n_vals, trials = [100, 500, 1000, 10_000], 100_000
 
 # Set up subplots
-fig, ax = plt.subplots(1, 4, sharex = True, sharey = True, figsize = (12, 4))
-
+fig, ax = plt.subplots(1, 4, sharex = True, sharey = True, 
+                       figsize = (12, 4), dpi = 125)
 for i, n in enumerate(n_vals):
     
     # Generate numbers of dimension trails x n
@@ -1492,7 +1560,7 @@ del X
 fig.suptitle('Law of Large Numbers Using Exponential Distribution')
 
 # Save the figure
-plt.savefig(path + r'ex3-4.png')
+plt.savefig(path + r'ex3-5.png')
 
 plt.plot()
 
@@ -1504,9 +1572,10 @@ print(f'This program took {time.perf_counter() - start_time:.3f} seconds.')
 
 \begin{frame}
 \frametitle{Law of Large Numbers Python Result}
-\begin{center}
-\includegraphics[scale = 0.4]{\pathtoimages/ex3-4.png}
-\end{center}
+\begin{figure}
+\centering
+\includegraphics[scale = 0.40]{\pathtoimages/ex3-5.png}
+\end{figure}
 \end{frame}
 
 \begin{frame}
@@ -1554,7 +1623,7 @@ Graph the empirical cdf of a $\chi^2(1)$ distribution with a sample of size 5, 5
 import numpy as np, matplotlib.pyplot as plt
 from scipy.stats import chi2
 
-# Use latex
+# Use LaTeX
 plt.rcParams['text.usetex'] = True
 
 # Use Seaborn style
@@ -1580,19 +1649,19 @@ x_vals = np.linspace(0, 5, 500)
 
 \begin{lstlisting}[language=Python]
 # Loop over the sample sizes
-for sample in sample_sizes:
+for sample_size in sample_sizes:
     
     # Generate data
-    data = chi2.rvs(df = 1, size = sample)
+    data = chi2.rvs(df = 1, size = sample_size)
     
     # Get the y-values
     y_vals = [ecdf(x, data) for x in x_vals]
     
     # Plot values
-    plt.plot(x_vals, y_vals, label = f'size = {sample}')
+    plt.plot(x_vals, y_vals, label = f'size = {sample_size}')
 
-# Get y-values
-y_vals = [chi2.cdf(x, df = 1) for x in x_vals]
+# Get y-values; function vectorized
+y_vals = chi2.cdf(x_vals, df = 1)
 
 # Plot standard normal cdf
 plt.plot(x_vals, y_vals, label = f'$\chi^2$')
@@ -1604,7 +1673,7 @@ del data, x_vals, y_vals
 plt.legend()
 
 # Save the figure
-plt.savefig(path + r'ex3-5.png')
+plt.savefig(path + r'ex3-6.png')
 
 plt.show()
 \end{lstlisting}
@@ -1614,7 +1683,7 @@ plt.show()
 \begin{frame}[fragile]
 \frametitle{Empirical CDFs Python Result}
 \begin{center}
-\includegraphics[scale = 0.5]{\pathtoimages/ex3-5.png}
+\includegraphics[scale = 0.4]{\pathtoimages/ex3-6.png}
 \end{center}
 
 \end{frame}
@@ -1633,7 +1702,7 @@ $$
 In other words, the sample mean should approximately follow the the distribution $\mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right)$ when $n$ is large.
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 \frametitle{Central Limit Theorem Python Example}
 \begin{Example}
 Illustrate the Central Limit Theorem with an exponential distribution, using the empirical cdf and means of size 2, 5, and 100.
@@ -1703,7 +1772,7 @@ plt.plot(x_vals, y_vals, label = 'Normal')
 plt.legend()
 
 # Save the figure
-plt.savefig(path + r'ex3-6.png')
+plt.savefig(path + r'ex3-7.png')
 
 plt.show()\end{lstlisting}
 
@@ -1713,7 +1782,7 @@ plt.show()\end{lstlisting}
 \frametitle{Central Limit Theorem Python Result}
 \begin{figure}
 \centering
-\includegraphics[scale = 0.4]{\pathtoimages/ex3-6.png}
+\includegraphics[scale = 0.4]{\pathtoimages/ex3-7.png}
 \end{figure}
 
 \end{frame}
@@ -1763,7 +1832,7 @@ You sample the numbers 8, 0.5, 0, and $-0.5$ from a normal distribution with kno
 \begin{itemize}
 \item The {\bf null hypothesis} ($H_0$) is a statement about a population parameter that is assumed to be true. We will test whether the value
 stated in the null hypothesis is likely to be true.
-\item An {\bf alternative hypothesis} ($H_1$) is a statement that directly contradicts a null hypothesis by stating that that the actual value of a population parameter is
+\item An {\bf alternative hypothesis} ($H_1$) is a statement that directly contradicts the null hypothesis by stating that that the actual value of a population parameter is
 less than, greater than, or not equal to the value stated in the null hypothesis.
 \end{itemize}
 \end{Definition}
@@ -1886,7 +1955,7 @@ Incomplete list of types of hypothesis tests.
 Name				&	Test Statistic							&	Comments \\\hline
 One-sample $z$-test		&	$z = \frac{\bar{X} - \mu_0}{\sigma/\sqrt{n}}$	&	\tiny Normal population or large $n$ and known $\sigma$. The value $\mu_0$ is the mean assuming the null hypothesis. \\
 One-sample $t$-test		&	$t = \frac{\bar{x} - \mu_0}{s/\sqrt{n}}$			&	\tiny Normal population or large $n$ and unknown $\sigma$. The degrees of freedom are $df = n - 1$\\
-One-proportion $z$-test	&	$z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1 - p_0)}{n}}}$& \tiny	$p_0$ is the proportion under the null hypothesis and $\min\{ n\cdot p_0, n\cdot (1- p_0)\} > 10$\\
+One-proportion $z$-test	&	$z = \frac{\hat{p} - p_0}{\sqrt{p_0(1 - p_0)/n}}$& \tiny	$p_0$ is the proportion under the null hypothesis and $\min\{ n\cdot p_0, n\cdot (1- p_0)\} > 10$\\
 \end{tabular}
 \end{frame}
 
@@ -1937,10 +2006,10 @@ trials = 100_000
 Z = norm.rvs(loc = 0, scale = 1, size = (trials, 10))
 
 # Calculate the sd without bias correction
-sd0 = np.apply_along_axis(lambda arr: np.std(arr, ddof = 0), 1, Z)
+sd0 = np.apply_along_axis(np.std, 1, Z, ddof = 0)
 
 # Calculate the sd with bias correction
-sd1 = np.apply_along_axis(lambda arr: np.std(arr, ddof = 1), 1, Z)
+sd1 = np.apply_along_axis(np.std, 1, Z, ddof = 1)
 \end{lstlisting}
 
 
@@ -1951,7 +2020,7 @@ sd1 = np.apply_along_axis(lambda arr: np.std(arr, ddof = 1), 1, Z)
 
 \begin{lstlisting}[language=Python]
 # Set up subplots
-fig, ax = plt.subplots(1, 2, sharex = True, sharey = True, figsize = (15, 5))
+fig, ax = plt.subplots(1, 2, sharex = True, sharey = True, figsize = (15, 5), dpi = 125)
 
 ax[0].hist(sd0, bins = int(np.sqrt(trials)), density = True)
 ax[0].axvline(x = 1, color = 'red', label = 'True')
@@ -1974,7 +2043,7 @@ fig.suptitle('Standard Deviation with and without Bias Correction')
 fig.tight_layout(pad = 1)
 
 # Save the figure
-plt.savefig(path + r'ex3-7.png')
+plt.savefig(path + r'ex3-8.png')
 
 plt.show()
 \end{lstlisting}
@@ -1985,7 +2054,7 @@ plt.show()
 \frametitle{Sample Standard Deviation Example Result}
 \begin{figure}
 \centering
-\includegraphics[scale = 0.3]{\pathtoimages/ex3-7.png}
+\includegraphics[scale = 0.3]{\pathtoimages/ex3-8.png}
 \end{figure}
 \end{frame}
 
