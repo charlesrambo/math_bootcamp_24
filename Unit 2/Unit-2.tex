@@ -91,20 +91,20 @@ A {\bf real vector space} $V$ is a set such that, for ${\boldsymbol u}$, ${\bold
 \small
 \begin{multicols}{2}
 \begin{enumerate}
-\item[VS.1] $({\boldsymbol u} + {\boldsymbol v}) + {\boldsymbol w} = {\boldsymbol u} + ({\boldsymbol v} + {\boldsymbol w})$.
+\item[VS.1] $({\boldsymbol u} + {\boldsymbol v}) + {\boldsymbol w} = {\boldsymbol u} + ({\boldsymbol v} + {\boldsymbol w})$
 \item[VS.2] There is an element ${\boldsymbol 0}$ in $V$ such that
 $
-{\boldsymbol 0} + {\boldsymbol u} = {\boldsymbol u} + {\boldsymbol 0} = {\boldsymbol u}.
+{\boldsymbol 0} + {\boldsymbol u} = {\boldsymbol u} + {\boldsymbol 0} = {\boldsymbol u}
 $
 \item[VS.3] There exists ${\boldsymbol -}{\boldsymbol u}$ in $V$ such that
 $
-{\boldsymbol u} + ({\boldsymbol -}{\boldsymbol u}) = ({\boldsymbol -}{\boldsymbol u}) + {\boldsymbol u} = {\boldsymbol 0}.
+{\boldsymbol u} + ({\boldsymbol -}{\boldsymbol u}) = ({\boldsymbol -}{\boldsymbol u}) + {\boldsymbol u} = {\boldsymbol 0}
 $
-\item[VS.4] ${\boldsymbol u} + {\boldsymbol v} = {\boldsymbol v} + {\boldsymbol u}$.
-\item[VS.5] $\alpha({\boldsymbol u} + {\boldsymbol v}) = \alpha {\boldsymbol u} + \alpha {\boldsymbol v}$.
-\item[VS.6] $(\alpha + \beta) {\boldsymbol u} = \alpha {\boldsymbol u} + \beta {\boldsymbol u}$.
-\item[VS.7] $(\alpha\beta) {\boldsymbol u} = \alpha(\beta {\boldsymbol u})$.
-\item[VS.8] $1 {\boldsymbol u} = {\boldsymbol u}$.
+\item[VS.4] ${\boldsymbol u} + {\boldsymbol v} = {\boldsymbol v} + {\boldsymbol u}$
+\item[VS.5] $\alpha({\boldsymbol u} + {\boldsymbol v}) = \alpha {\boldsymbol u} + \alpha {\boldsymbol v}$
+\item[VS.6] $(\alpha + \beta) {\boldsymbol u} = \alpha {\boldsymbol u} + \beta {\boldsymbol u}$
+\item[VS.7] $(\alpha\beta) {\boldsymbol u} = \alpha(\beta {\boldsymbol u})$
+\item[VS.8] $1 {\boldsymbol u} = {\boldsymbol u}$
 \end{enumerate}
 \end{multicols}
 }
@@ -153,7 +153,7 @@ If the set is not linearly independent, then it is {\bf linearly dependent}.
 \begin{frame}
 \frametitle{Span}
 \begin{Definition}
-The {\bf span} of $\{v_1, v_2,\ldots, v_m\}$ is 
+The {\bf span} of $\{{\boldsymbol v_1}, {\boldsymbol v_2},\ldots, {\boldsymbol v_m}\}$ is 
 $$
 \text{span}\{{\boldsymbol v_1}, {\boldsymbol v_2},\ldots, {\boldsymbol v_m}\} = \{\alpha_1{\boldsymbol v_1} + \alpha_2{\boldsymbol v_2} + \ldots + \alpha_m {\boldsymbol v_m} : \alpha_i\in\mathbb{R}\}.
 $$
@@ -219,7 +219,7 @@ Compute (a) $2 A + B$ and (b) $A B^T$.
 
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 \frametitle{Python Matrix Arithmetic}
 \begin{Example}
 Suppose
@@ -277,7 +277,7 @@ The operator \texttt{@} was introduced in Python 3.5, and is equivalent to \text
 \begin{frame}
 \frametitle{Special Matrices}
 \begin{itemize} 
-\item The $n\times n$ identity matrix $I$, such that $A I = A$ for $A$ an $m\times n$ matrix and $I B = B$ for $B$ an $n\times m$ matrix. This matrix has ones on the main diagonal and zeros elsewhere. In Python, the command for the $n\times n$ identity matrix is \texttt{np.eye(n)}.
+\item The $n\times n$ identity matrix $I$ is such that $A I = A$ for $A$ an $m\times n$ matrix and $I B = B$ for $B$ an $n\times m$ matrix. This matrix has ones on the main diagonal and zeros elsewhere. In Python, the command for the $n\times n$ identity matrix is \texttt{np.eye(n)}.
 \item If $A$ is an $n\times n$ {\bf invertible} or {\bf non-singular} matrix, there is an $n\times n$ matrix $B$ such that $AB = BA = I$. We typically call $B$ the {\bf inverse} of $A$ and write it as $A^{-1}$. In Python, the command is \texttt{np.linalg.inv(A)}.
 \end{itemize}
 \end{frame}
@@ -304,7 +304,7 @@ Let $U$ and $V$ be real vector spaces, and suppose $\alpha$ and $\beta$ are in $
 $$
 T(\alpha {\boldsymbol u_1} + \beta {\boldsymbol u_2}) = \alpha T({\boldsymbol u_1}) + \beta T({\boldsymbol u_2})
 $$
-for all ${\boldsymbol u_1}$ and ${\boldsymbol u_2}$ in $U$. The vector space $U$ is the {\bf domain} of $T$ and $V$ is the {\bf codomain} of $T$. The set $\text{Im}(T) = \{T({\boldsymbol u}) : {\boldsymbol u}\in U\}$ is the {\bf image} or {\bf range} of $T$.
+for all ${\boldsymbol u_1}$ and ${\boldsymbol u_2}$ in $U$. The vector space $U$ is the {\bf domain} of $T$ and $V$ is the {\bf codomain} of $T$. The set $\text{Im}(T) = \{T({\boldsymbol u}) | {\boldsymbol u}\in U\}$ is the {\bf image} or {\bf range} of $T$.
 \end{Definition}
 
 \end{frame}
@@ -322,12 +322,12 @@ Prove $F: \mathbb{R}^3\to\mathbb{R}^2$ defined by $F:(x, y, z)\mapsto (x, y)$ is
 \begin{Definition}
 The {\bf kernel} of a linear transformation $T:U\to V$ is 
 $$
-\text{Ker}(T) = \{{\boldsymbol u} : T({\boldsymbol u}) = {\boldsymbol 0}\}.
+\text{Ker}(T) = \{{\boldsymbol u} | T({\boldsymbol u}) = {\boldsymbol 0}\}.
 $$
 \end{Definition}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 \frametitle{Kernel Example}
 \tiny
 \begin{Example}
@@ -425,7 +425,41 @@ $$
 
 \end{frame}
 
-\subsection{Inner Product Space}
+\begin{frame}[fragile]
+\frametitle{Python Code}
+
+\begin{lstlisting}[language=Python]
+import numpy as np
+from scipy.linalg import null_space
+
+# Change of basis function
+def change_matrix_basis(matrix, basis_new):
+    """
+    matrix: nxn matrix written in original basis
+    basis_new: nxn matrix where column j represents 
+        the j-th basis element written in terms of 
+        the original basis
+        
+    return: matrix written in terms of the new basis
+    """
+    
+    # Check to verify that basis_new is actually a basis
+    if null_space(basis_new).shape[1] != 0:
+        
+        raise Exception('This is not a basis!')
+    
+    # Calculate matrix written in new basis
+    matrix_new = np.linalg.inv(basis_new) @ matrix @ basis_new
+    
+    # Round since float accuracy makes numbers slightly off
+    matrix_new = np.round(matrix_new, 6)
+    
+    return matrix_new
+\end{lstlisting}
+
+\end{frame}
+
+\subsection{Inner Product Spaces}
 
 \begin{frame}
 \frametitle{Inner Product}
@@ -465,12 +499,12 @@ $$
 $$
 \end{frame}
 
-\subsection{Norm and Distance}
+\subsection{Norms and Distances}
 
 \begin{frame}
 \frametitle{Norm}
 \begin{Definition}
-Suppose $V$ is a a real vector space, ${\boldsymbol u}$ and ${\boldsymbol v}$ are in $V$, and $\alpha$ is in $\mathbb{R}$. A {\bf norm} is a real valued function $\|\cdot\|: V\to R$  with the following properties.
+Suppose $V$ is a a real vector space, ${\boldsymbol u}$ and ${\boldsymbol v}$ are in $V$, and $\alpha$ is in $\mathbb{R}$. A {\bf norm} is a real valued function $\|\cdot\|: V\to \mathbb{R}$  with the following properties.
 \begin{enumerate}
 \item[N.1] $\| {\boldsymbol v}\| \geq 0$ and $\| {\boldsymbol v}\| = 0$ if and only if ${\boldsymbol v} = {\boldsymbol 0}$.
 \item[N.2] $\|\alpha {\boldsymbol v}\| = |\alpha| \| {\boldsymbol v}\|$.
@@ -577,7 +611,7 @@ d({\boldsymbol u}, {\boldsymbol v}) = \| {\boldsymbol u} - {\boldsymbol v}\|.
 $$
 \end{frame}
 
-\subsection{Projection}
+\subsection{Projections}
 
 \begin{frame}[t]
 \frametitle{Projection}
@@ -603,13 +637,13 @@ $$
 
 
 
-\begin{frame}
+\begin{frame}[t]
 \frametitle{Projection Example}
 
 \begin{Example}
 Suppose
 $$
-{\boldsymbol u} = \left(\begin{array}{c} 2\\ 1\end{array}\right)\qquad\text{and}\qquad {\boldsymbol v} = \left(\begin{array}{c} 1\\ 3\end{array}\right).
+{\boldsymbol u} = \left(\begin{array}{c} 2\\ 1\end{array}\right)\qquad\text{and}\qquad {\boldsymbol v} = \left(\begin{array}{c} 1\\ 2\end{array}\right).
 $$
 Compute $proj_{\boldsymbol u}( {\boldsymbol v})$.
 \end{Example}
@@ -624,49 +658,50 @@ Compute $proj_{\boldsymbol u}( {\boldsymbol v})$.
 # Import modules
 import numpy as np, matplotlib.pyplot as plt
 
-# Use Seaborn style
+# Use Seaborn style; use LaTeX
 plt.style.use('seaborn')
-
-# Use latex
 plt.rcParams['text.usetex'] = True
 
 # Define u and v
 u, v = np.array([2, 1]), np.array([1, 2])
 
-# Calculate project; key step
+# Calculate projection; key step
 proj = np.dot(u, v)/np.linalg.norm(u)**2 * u
 
-# Calc the part of v perpendicular to u
-proj_perp = v - proj
+# Calculate the part of v perpendicular to u
+u_perp = v - proj
 
 # Define origin
 origin = np.array([0, 0])
 
 # Plot figure
-fig, ax = plt.subplots(1, 1, dpi = 200)
+fig, ax = plt.subplots(1, 1, dpi = 150)
 
 # Draw arrow for u
 ax.arrow(*origin, *u, label = r'$\vec{u}$', 
-         color = 'blue', width = 0.01, 
+	color = 'blue', width = 0.01, 
          length_includes_head = True)
 
 # Draw arrow for v
 ax.arrow(*origin, *v, label = r'$\vec{v}$', 
          color = 'red', width = 0.01, 
+         
+         
          length_includes_head = True)
 
 # Draw arrow for projection
 ax.arrow(*origin, *proj, label = r'$proj_{\vec{u}}(\vec{v})$', 
-           color = 'purple', width = 0.01, 
-         length_includes_head = True)
+           	color = 'purple', width = 0.01, 
+         	length_includes_head = True)
 
-# Draw arrow for v - proj; initial side at terminal side of proj
-ax.arrow(*proj, *proj_perp, label = r'$v - proj_{\vec{u}}(\vec{v})$', 
+# Draw arrow for part of v perpendicular to u
+# Place initial side at terminal side of projection
+ax.arrow(*proj, *u_perp, label = r'$v - proj_{\vec{u}}(\vec{v})$', 
            color = 'gray', width = 0.01, 
          length_includes_head = True)
 
 # Add a little horizontal space for legend
-ax.set_xlim([0, np.max([u[1], v[1], proj[1], proj_perp[1]]) + 0.2])
+ax.set_xlim([0, np.max([u[0], v[0], proj[0], u_perp[0]]) + 0.2])
 
 # Make aspect ratio equal
 fig.gca().set_aspect('equal')
@@ -748,7 +783,7 @@ $$
 \begin{Definition}
 The {\bf orthogonal complement} of a set $X\subseteq V$ is the set
 $$
-X^\perp = \{{\boldsymbol v} \in V: \langle {\boldsymbol x}, {\boldsymbol v}\rangle = 0\ \text{for all}\ {\boldsymbol x}\in X\}.
+X^\perp = \{{\boldsymbol v} \in V| \langle {\boldsymbol x}, {\boldsymbol v}\rangle = 0\ \text{for all}\ {\boldsymbol x}\in X\}.
 $$
 \end{Definition}
 
@@ -780,6 +815,115 @@ $$
 $$
 Compute the best approximation of ${\boldsymbol v} =(1, 2, 3)^T$ contained in $U$.
 \end{Example}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Easy Projection Python Code}
+\begin{lstlisting}[language=Python]
+import numpy as np
+
+# Define u1 and u2
+u1, u2 = np.array([1, 1, 0]), np.array([1, -1, 0])
+
+# Define v
+v = np.array([1, 2, 3])
+
+# Calculate projection
+
+# First, projection onto u1
+proj = np.dot(u1, v)/np.linalg.norm(u1)**2 * u1 
+
+# Second, add projection onto u2
+proj += np.dot(u2, v)/np.linalg.norm(u2)**2 * u2
+
+proj
+\end{lstlisting}
+The result is [1, 2, 0] as expected.
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Projection Check}
+\begin{Example}
+Consider the subspace $U$ of $\mathbb{R}^3$ spanned by the orthogonal vectors 
+$$
+{\boldsymbol u_1} = \left(\begin{array}{c} 1\\ 1\\ 0\end{array}\right)\qquad\text{and}\qquad {\boldsymbol u_2} = \left(\begin{array}{c} 1\\ -1\\ 0\end{array}\right),
+$$
+and ${\boldsymbol v} =(1, 2, 3)^T$. Randomly generate elements ${\boldsymbol u'}$ in U to verify that  $\| {\boldsymbol v} - proj_U({\boldsymbol v})\| \leq \| {\boldsymbol v} - {\boldsymbol u'}\|$.
+\end{Example}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Projection Check Python Code}
+\begin{lstlisting}[language=Python]
+# Calculate minimal norm
+min_norm = np.linalg.norm(v - proj)
+
+# Define number of trials
+trials = 100_000
+
+# Initialize object to hold results
+norm_vals = np.zeros(trials)
+
+for i in range(trials):
+    
+    # Generate weights; use guassian distribution
+    alpha = np.random.normal(size = 2)
+    
+    # Calculate u'
+    u_prime = alpha[0] * u1 + alpha[1] * u2
+    
+    # Calculate and record norm
+    norm_vals[i] = np.linalg.norm(v - u_prime)
+    
+print(f'The number of norms less than the norm of v - proj_U(v) is {np.sum(norm_vals < min_norm)}.')
+\end{lstlisting}
+The output reads
+\begin{center}
+\texttt
+The number of norms less than the norm of v - proj\_U(v) is 0.
+\end{center}
+This was the expected result!
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Projection Check Histogram Python Code}
+
+\begin{lstlisting}[language=Python]
+import matplotlib.pyplot as plt
+
+# Use Seaborn style
+plt.style.use('seaborn')
+
+# Use LaTeX
+plt.rcParams['text.usetex'] = True
+
+# Plot figure
+fig, ax = plt.subplots(1, 1, dpi = 150)
+
+ax.hist(norm_vals, label = r"$\|\vec{v} - \vec{u}'\|$", bins = int(np.sqrt(trials)))
+
+ax.axvline(min_norm, ymin = 0, ymax = 1, label = r'$\| \vec{v} - proj_U(\vec{v})\|$', 
+             color = 'red')
+
+ax.set_title(r"$\min_{\vec{u}'\in U} \| \vec{v} - \vec{u}'\| = $ " 
+	+ f'{np.min(norm_vals):.5f};' + r' $\|\vec{v} - proj_{U}(\vec{v})\| = $ ' 
+	+ f'{min_norm:.5f}.', fontsize = 15)
+
+# Create a legend
+ax.legend(fontsize = 12)
+
+# Save the figure
+plt.savefig(path + r'ex2-2.png')
+
+plt.show()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Projection Check Histogram}
+\begin{center}
+\includegraphics[scale = 0.5]{\pathtoimages/ex2-2.png}
+\end{center}
 \end{frame}
 
 \begin{frame}[t]
@@ -836,7 +980,7 @@ a_proj, b_proj = inner(u1, np.exp)/inner(u1, u1), inner(u2, np.exp)/inner(u2, u2
 h = 1e-5
 
 # Calculate tangent line coeffs
-a_tl, b_tl = np.exp(1/2), (np.exp(0.5 + h) - np.exp(0.5 - h))/(2 * h)
+a_tl, b_tl = np.exp(0.5), (np.exp(0.5 + h) - np.exp(0.5 - h))/(2 * h)
 
 # Define functions 
 proj = lambda x: a_proj * u1(x) + b_proj * u2(x)
@@ -853,7 +997,7 @@ plt.plot(x_vals, [np.exp(x) for x in x_vals], label = 'True')
 # Create a legend
 plt.legend()
 # Save the figure
-plt.savefig(path + r'ex2-2.png')
+plt.savefig(path + r'ex2-3.png')
 # Show plot
 plt.show()
 \end{lstlisting}
@@ -862,12 +1006,12 @@ plt.show()
 \begin{frame}[fragile]
 \frametitle{Hard Projection Example Image}
 \begin{center}
-\includegraphics[scale = 0.5]{\pathtoimages/ex2-2.png}
+\includegraphics[scale = 0.5]{\pathtoimages/ex2-3.png}
 \end{center}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Projection Example Solution Result}
+\frametitle{Projection Example Result}
 
 \begin{lstlisting}[language=Python]
 # Define norm
@@ -984,10 +1128,10 @@ where $A_i$ is the matrix formed by replacing the $i$-th column of $A$ by the co
 \begin{Example}
 Solve the system 
 $$
-\begin{array}{r l}
-3x + 2y + 4z 	&= 1\\
-2x - y + z		&= 0\\
-x + 2y + 3z	&= 1.
+\begin{array}{r c c l}
+3x 	&+ 2y 	&- 2z 	&= 1\\
+2x 	&- y		&		&= 0\\
+	&-4y 		&+ 3z	&= 1.
 \end{array} 		
 $$
 \end{Example}
@@ -1117,7 +1261,7 @@ for i in range(len(evals)):
 The output is shown below
 \begin{figure}
 \centering
-\includegraphics[scale = 0.5]{\pathtoimages/ex2-3.png}
+\includegraphics[scale = 0.5]{\pathtoimages/ex2-4.png}
 \end{figure}
 \end{frame}
 
@@ -1168,7 +1312,7 @@ Watch the 3Blue1Brown linear algebra video series. The series includes most of w
 \begin{Definition}
 Suppose we have $f:\mathbb{R}^n \to \mathbb{R}$. Then the {\bf partial derivative} of $f$ with respect to $x_i$ is
 $$
-\frac{\partial f}{\partial x_i} = \lim_{h\to 0} \frac{f(x_1, x_2,\ldots, x_i + h,\ldots, x_n) - f(x_1, x_2,\ldots, x_n)}{h}.
+\frac{\partial f}{\partial x_i} = \lim_{h\to 0} \frac{f(x_1, x_2,\ldots, x_i + h,\ldots, x_n) - f(x_1, x_2,\ldots, x_i,\ldots, x_n)}{h}.
 $$
 \end{Definition}
 The most common case is $f:\mathbb{R}^2\to \mathbb{R}$ such that $z = f(x, y)$. Then the two partials are
@@ -1216,7 +1360,7 @@ where $\varepsilon_1,\varepsilon_2\to 0$ as $\Delta x,\Delta y\to 0$.
 \begin{frame}[t]
 \frametitle{Example}
 \begin{Example}
-Suppose $f(x, y, z) = \sqrt{xyz}$. Approximate $f(3.9, 4.2, 3.9)$.
+Suppose $f(x, y, z) = \sqrt{xyz}$. Approximate $f(3.9, 4.2, 3.8)$.
 \end{Example}
 
 \end{frame}
@@ -1272,7 +1416,7 @@ $$
 $$
 \end{frame}
 
-\subsection{Gradient Vector}
+\subsection{Gradient Vectors}
 \begin{frame}
 \frametitle{Space Curve}
 A curve in $\mathbb{R}^n$ can be defined in terms of a vector valued function ${\boldsymbol r}$, where ${\boldsymbol r}:I\to\mathbb{R}^n$ and $I$ is some subset of $\mathbb{R}$. 
@@ -1308,6 +1452,11 @@ $$
 {\boldsymbol r }'(t) =\lim_{h\to 0} \frac{{\boldsymbol r}(t + h) - {\boldsymbol r}(t)}{h}.
 $$
 The derivative is tangent to the curve described by ${\boldsymbol r}$.
+\begin{center}
+\includegraphics[scale = 0.25]{\pathtoimages/tangent.png}
+\end{center}
+
+
 \end{frame}
 
 \begin{frame}
@@ -1321,13 +1470,13 @@ The chain rule implies
 $$
 \nabla F({\boldsymbol r}(t))\bullet {\boldsymbol r'}(t) = 0.
 $$
-The vector ${\boldsymbol r'}(t)$ is parallel to the surface. Hence, $\nabla F({\boldsymbol r}(t))$ is orthogonal. Since ${\boldsymbol r}$ was arbitrary, we must have $\nabla F(x)$ is orthogonal to $F(x) = k$.
+The vector ${\boldsymbol r'}(t)$ is parallel to the surface. Hence, $\nabla F({\boldsymbol r}(t))$ is orthogonal. Since ${\boldsymbol r}$ was arbitrary, $\nabla F(x)$ must be orthogonal to $F(x) = k$.
 \end{frame}
 
 \begin{frame}
 \frametitle{Gradient Vector Example}
 
-Consider $F(x, y) = x + y = 1$. Then $\nabla F = (1, 1)$. We can see this vector is orthogonal to our line (or ``surface" to use the more general term).
+Consider $F(x, y) = x + y = 1$. Then $ \nabla F = (1, 1)$. We can see this vector is orthogonal to our line (or ``surface" to use the more general term).
 \begin{center}
 \begin{tikzpicture}[scale = 1.5]
 
@@ -1350,7 +1499,10 @@ Consider $F(x, y) = x + y = 1$. Then $\nabla F = (1, 1)$. We can see this vector
 \frametitle{Local Maximum and Minimum}
 
 \begin{Definition}
-A function of two variables has a {\bf local maximum} at $(a, b)$ if $f(x, y)\leq f(a, b)$ for all points $(x, y)$ in some disk with center $(a, b)$. The number $f(a, b)$ is called a {\bf local maximum value}, if $f(x, y) \geq f(a, b)$ for all $(x, y)$ in such a disk, $f(a, b)$ is a {\bf local minimum value}.
+\begin{itemize}
+\item A function of two variables has a {\bf local maximum} at $(a, b)$ if $f(x, y)\leq f(a, b)$ for all points $(x, y)$ in some disk with center $(a, b)$. The number $f(a, b)$ is called a {\bf local maximum value}. 
+\item A function of two variables has a {\bf local minimum} at $(a, b)$ if $f(x, y)\geq f(a, b)$ for all points $(x, y)$ in some disk with center $(a, b)$. The number $f(a, b)$ is called a {\bf local minimum value}. 
+\end{itemize}
 \end{Definition}
 
 \begin{Theorem}
@@ -1453,7 +1605,7 @@ There are many global optimization techniques in Python. However, they tend to b
 
 \begin{frame}
 \frametitle{Lagrange Multipliers}
-For ${\boldsymbol x}\in \mathbb{R}^n$, consider $f({\boldsymbol x})$ subject to $g({\boldsymbol x}) = k$. If extrema exist, they satisfy the equation
+For ${\boldsymbol x}\in \mathbb{R}^n$, consider $f({\boldsymbol x})$ subject to $g({\boldsymbol x}) = k$. If local extrema exist, they satisfy the equation
 $$
 \nabla f({\boldsymbol x}) = \lambda \nabla g({\boldsymbol x}).
 $$
@@ -1510,13 +1662,13 @@ Calculate $\displaystyle\iint_{[0,1]\times[0, 1]} xy^2\ dA$. Use a uniform parti
 Use \texttt{scipy.integrate.dblquad} to verify the previous result for $\displaystyle\iint_{[0,1]\times[0, 1]} xy^2\ dA$.
 \end{Example}
 \begin{lstlisting}[language=Python]
-import numpy as np
+# See https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.dblquad.html
 from scipy.integrate import dblquad
 
-# Define f
+# Define f; integrate y the x
 f = lambda y, x: x * y**2
 
-# Integrate
+# Integrate; integrate 3rd to 4th input then 2nd to 3rd input
 dblquad(f, 0, 1, 0, 1)[0]
 \end{lstlisting}
 The output is \texttt{0.16666666666666669} which agrees with our previous result. 
@@ -1540,7 +1692,7 @@ $$
 \begin{frame}[t]
 \frametitle{Fubini's Theorem Example}
 \begin{Example}
-Evaluate $\displaystyle\iint_R y\sin(xy)\ dA$, where $R = [1, 2]\times [0, \pi]$.
+Evaluate $\displaystyle\iint_R y\sin(xy)\ dA$, where $R = [1, 2]\times \left[0, \frac{\pi}{2}\right]$.
 \end{Example}
 
 \end{frame}
@@ -1561,7 +1713,7 @@ The next slide will help show how to handle these integrals in practice.
 \begin{frame}[t]
 \frametitle{Integral of General  Region}
 \begin{Example}
-Compute $\displaystyle\iint_D ye^x\ dA$, where $D$ is the triangular region with vertices $(0, 0)$, $(2, 4)$, and $(6, 0)$.
+Compute $\displaystyle\iint_D xy^2\ dA$, where $D$ is the triangular region with vertices $(0, 0)$, $(0, 2)$, and $(1, 0)$.
 \end{Example}
 
 \end{frame}
