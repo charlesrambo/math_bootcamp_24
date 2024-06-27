@@ -148,11 +148,10 @@ fig, ax = plt.subplots(2, 2, sharex = True, sharey = True, figsize = (10, 7))
 for i, part, cov in zip(range(4), parts, covs):
     
     # Get the row and column
-    row, col = i // 2, i %2
+    row, col = i // 2, i%2
 
     # Generate values
-    vals = multivariate_normal.rvs(mean = np.zeros(2), 
-                                   cov = cov, size = 100)
+    vals = multivariate_normal.rvs(mean = np.zeros(2), cov = cov, size = 100)
     
     # Get x- and y-coordinates
     x, y = zip(*vals)
@@ -195,7 +194,7 @@ In the sample covariance matrix, we divide by $n-1$ instead of $n$. Using the \t
 \begin{frame}[fragile]
 \frametitle{Sample Covariance Matrix Example}
 \small 
-Here is some code to get the sample covariance matrix for the {\it current} S\&P constituents. The uploaded data are the available daily constituents returns from January 1, 2019 to May 31, 2024. The data source is Yahoo Finance. Check out the Unit 4 Code Snippets to see how the data were extracted.
+Here is some code to get the sample covariance matrix for the {\it current} S\&P constituents. The uploaded data are the available daily constituents returns from January 1, 2019 to May 31, 2024. The data source is {\it Yahoo! Finance}. Check out the Unit 4 Code Snippets to see how the data were extracted.
 \begin{lstlisting}[language=Python]
 # Import modules
 import pandas as pd
@@ -368,7 +367,7 @@ plt.show()
 
 \begin{frame}
 \frametitle{Reconstruction}
-If we have data with mean $ {\boldsymbol \mu}$, and we used the loadings of the first $\ell$ eigenvectors ${\boldsymbol v_1}, {\boldsymbol v_2},\ldots, {\boldsymbol v_\ell}$ to approximate $u$, then this is making the assumption
+If we have data with mean $ {\boldsymbol \mu}$, and we used the loadings of the first $\ell$ eigenvectors ${\boldsymbol v_1}, {\boldsymbol v_2},\ldots, {\boldsymbol v_\ell}$ to approximate ${\boldsymbol u}$, then this is making the assumption
 $$
 {\boldsymbol u} \approx  {\boldsymbol \mu} + \alpha_1 {\boldsymbol v_1} + \alpha_2 {\boldsymbol v_2}+\ldots + \alpha {\boldsymbol v_\ell},
 $$
@@ -501,7 +500,6 @@ $$
 \begin{frame}[fragile]
 \frametitle{Marchenko-Pastur Example}
 
-\begin{multicols}{2}
 \begin{lstlisting}[language=Python]
 # Import modules
 import numpy as np
@@ -524,6 +522,13 @@ start_time = time.perf_counter()
 # Generate normal random variables
 X = norm.rvs(size = (100_000, 10_000))
 
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Marchenko-Pastur Example}
+
+\begin{lstlisting}[language=Python]
 # Get the number of observations and variables
 T, N = X.shape
 
@@ -551,20 +556,22 @@ def f(lam):
         
         return 0
 
-# Get lam_vals
-lam_vals = np.linspace(lam_minus, lam_plus, 100)
-
-# Get density values
-f_vals = [f(lam) for lam in lam_vals]
 \end{lstlisting}
-\end{multicols}
-
 \end{frame}
+
+
 
 \begin{frame}[fragile]
 \frametitle{Marchenko-Pastur Example Cont.}
 
 \begin{lstlisting}[language=Python]
+
+# Get lam_vals
+lam_vals = np.linspace(lam_minus, lam_plus, 100)
+
+# Get density values
+f_vals = [f(lam) for lam in lam_vals]
+
 # Plot histogram
 plt.hist(evals, density = True, bins = int(np.sqrt(N)), label = 'Simulated Distribution')
 
@@ -615,9 +622,8 @@ Consider eigenvalue $\lambda$ of the covariance matrix.
 \begin{frame}[fragile]
 \frametitle{S\&P 500 Constituent Example}
 Suppose we have the S\&P 500 constituent data from before.
-\begin{multicols}{2}
 \begin{lstlisting}[language=Python]
-# Get the standard devations
+# Get the standard deviations
 stds = np.sqrt(np.diag(S))
 
 # Calculate correlation matrix
@@ -636,12 +642,9 @@ lam_minus, lam_plus = (1 - np.sqrt(1/q))**2, (1 + np.sqrt(1/q))**2
 def f(lam):
     
     # Support of Marchenko–Pastur distribution
-    if lam_minus <= lam <= lam_plus:
-    
-        return q/(2 * np.pi) * np.sqrt((lam_plus - lam) * (lam - lam_minus))/lam
-                
-    else:
-        
+    if lam_minus <= lam <= lam_plus:  
+        return q/(2 * np.pi) * np.sqrt((lam_plus - lam) * (lam - lam_minus))/lam                
+    else:       
         return 0
     
 # Get lam_vals
@@ -649,7 +652,13 @@ lam_vals = np.linspace(lam_minus, lam_plus, 100)
 
 # Get density values
 f_vals = [f(lam) for lam in lam_vals]
+\end{lstlisting}
+\end{frame}
 
+
+\begin{frame}[fragile]
+\frametitle{S\&P 500 Constituent Example}
+\begin{lstlisting}[language=Python]
 # Plot histogram
 plt.scatter(evals[evals > lam_plus], np.zeros(np.sum(evals > lam_plus)), 
             label = 'Signal Eigenvalues')
@@ -676,19 +685,18 @@ plt.ylabel(r'Density')
 plt.title(r'S\&P 500 Constituents')
 
 # Save the figure
-plt.savefig(path + r'ex4-3.png')
+plt.savefig(path + r'ex4-4.png')
 
 plt.show()
 \end{lstlisting}
-\end{multicols}
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{S\&P 500 Constituent Example}
-Only the values past $\lambda_+$ are consistent with signal. There is an eigenvalue of about 70 that is not shown.
+Only the values past $\lambda_+$ are consistent with signal. There are three eigenvalues greater than 10 which are not shown.
 \begin{figure}
 \centering
-\includegraphics[scale = 0.4]{\pathtoimages/ex4-3.png}
+\includegraphics[scale = 0.4]{\pathtoimages/ex4-4.png}
 \end{figure}
 
 \end{frame}
@@ -758,7 +766,7 @@ If it is know by time $t$ whether or not an event $E$ has occurred, then we have
 \frametitle{Stochastic Process}
 
 \begin{Definition}
-For a given probability space $(\Omega, \mathcal{F}, P)$, a {\bf stochastic process} is a collection of random variables indexed by $\mathcal{T}$. We often write $\{X_t : t \in\mathcal{T}\}$ to denote a stochastic process, and we think of $\mathcal{T}$ as the time index.
+For a given probability space $(\Omega, \mathcal{F}, P)$, a {\bf stochastic process} is a collection of random variables indexed by $\mathcal{T}$. We often write $\{X_t | t \in\mathcal{T}\}$ to denote a stochastic process, and we think of $\mathcal{T}$ as the time index.
 \end{Definition}
 \end{frame}
 
@@ -766,7 +774,7 @@ For a given probability space $(\Omega, \mathcal{F}, P)$, a {\bf stochastic proc
 \frametitle{Stochastic Process Example}
 
 \begin{Example}
-For a high yield bond portfolio, we can model the total number of defaulted bonds this year up to day $t$ as a stochastic process. Denote the number of defaulted bonds on day $t$ by $N_t$. In this case, $\mathcal{T} = \{1, 2, 3,\ldots, 252\}$, assuming there are 252 days when the market is open. Using our prior notation, the stochastic process is $\{N_t : t\in\mathcal{T}\}$.
+For a high yield bond portfolio, we can model the total number of defaulted bonds this year up to day $t$ as a stochastic process. Denote the number of defaulted bonds on day $t$ by $N_t$. In this case, $\mathcal{T} = \{1, 2, 3,\ldots, 252\}$, assuming there are 252 days when the market is open. Using our prior notation, the stochastic process is $\{N_t | t\in\mathcal{T}\}$.
 \end{Example}
 
 \end{frame}
@@ -782,15 +790,15 @@ We say that a stochastic process $X_t$ is $\mathcal{F}_t${\bf-adapted} if for ev
 \begin{frame}
 \frametitle{Brownian Motion}
 \begin{Definition}
-A stochastic process $\{W_t : t\geq 0\}$ is a {\bf standard Brownian motion} if the following hold.
+A stochastic process $\{W_t | t\geq 0\}$ is a {\bf standard Brownian motion} if the following hold.
 \medskip
 
 \begin{quote}
 \begin{enumerate}
 \item[BM.1] $W_0 = 0$.
 \item[BM.2] It has continuous sample paths.
-\item[BM.3] It has independent stationary increments.
-\item[BM.4] $W_t - W_s \sim{\mathcal{N}(0, t - s)}$ for all $0\leq s \leq t$.
+\item[BM.3] $W_{t_1} - W_{s_1}$ and $W_{t_2} - W_{s_2}$ are independent for $0\leq s_1 \leq t_1 \leq s_2 \leq t_2$.
+\item[BM.4] $W_t - W_s \sim{\mathcal{N}(0, t - s)}$ for $0\leq s \leq t$.
 \end{enumerate}
 \end{quote}
 \end{Definition}
@@ -864,7 +872,7 @@ plt.show()
 \frametitle{Output}
 Five Brownian motions on the interval $[0, 1]$, using a uniform partition that breaks $[0, 1]$ into 500 subintervals. 
 \begin{center}
-\includegraphics[scale = 0.4]{\pathtoimages/ex4-4.png}
+\includegraphics[scale = 0.4]{\pathtoimages/ex4-5.png}
 \end{center}
 
 \end{frame}
@@ -874,7 +882,7 @@ Five Brownian motions on the interval $[0, 1]$, using a uniform partition that b
 \frametitle{Martingale} 
 
 \begin{Definition}
-A stochastic process $\{X_t : 0\leq t \leq\infty\}$ is a {\bf martingale} with respect to the filtration $\mathcal{F}_t$ if the following hold.
+A stochastic process $\{X_t | 0\leq t \leq\infty\}$ is a {\bf martingale} with respect to the filtration $\mathcal{F}_t$ if the following hold.
 \medskip
 
 \begin{quote}
@@ -909,7 +917,7 @@ Let $X_t$ be some stochastic process. The {\bf quadratic variation} of a stochas
 $$
 \lim_{\|\mathcal{P}\|\to 0} \sum_{k = 1}^n \Big(X_{t_k} - X_{t_{k - 1}}\Big)^2,
 $$
-where $\mathcal{P}$ is an arbitrary partition of $[0, T]$ and $\|\mathcal{P}\| = \max_k\{\Delta t_k\}$ is the mesh of the partition.
+where $\mathcal{P}$ is an arbitrary partition of $[0, T]$ and $\|\mathcal{P}\| = \max\limits_k\{\Delta t_k\}$ is the mesh of the partition.
 \end{Definition}
 \end{frame}
 
@@ -942,10 +950,8 @@ The quadratic variation of a standard Brownian motion is equal to $T$ with proba
 \begin{frame}[fragile]
 \frametitle{Approximate Quadratic Variation Python Code}
 
-\begin{multicols}{2}
 \begin{lstlisting}[language=Python]
-import numpy as np
-import matplotlib.pyplot as plt
+import numpy as np, matplotlib.pyplot as plt
 from scipy.stats import norm
 
 # Use LaTeX
@@ -957,51 +963,68 @@ plt.style.use('seaborn')
 # Set the random seed
 np.random.seed(0)
 
-# Break up into n discrete intervals
-n = 500
+# Define n-values
+n_vals = [10, 100, 1000, 10000]
+
+# Set up subplots
+fig, ax = plt.subplots(2, 2, sharey = True, figsize = (15, 10), dpi = 125)
 
 # Simulate five Brownian motions
-for _ in range(5):
+for i, n in enumerate(n_vals):
     
-    # Difference of two Brownian motion is normal
-    Z = norm.rvs(scale = np.sqrt(1/n), size = n)
+    # Get row and column
+    row, col = i//2, i % 2
     
-    # Add zero to start since W_0 = 0
-    quad_var = np.insert(np.cumsum(Z**2), 0, 0)
+    # Difference of two Brownian motions is normal
+    dW = norm.rvs(scale = np.sqrt(1/n), size = (3, n))
     
-    # Plot results
-    plt.plot(np.linspace(0, 1, n + 1), quad_var)
+    # Calculate quadratic variance
+    quad_var = np.cumsum(dW**2, axis = 1)
 
-# Plot t
-plt.plot(np.linspace(0, 1, n + 1), np.linspace(0, 1, n + 1), 
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Approximate Quadratic Variation Python Code}
+
+\begin{lstlisting}[language=Python]    
+    # Plot results
+    for j in range(3):
+        
+        ax[row, col].plot(np.linspace(1/n, 1, n), quad_var[j, :])
+
+    # Plot t
+    ax[row, col].plot(np.linspace(1/n, 1, n), np.linspace(1/n, 1, n), 
          label = r'$t$')
     
-# Add x-label
-plt.xlabel(r'$t$')
+    # Add x-label
+    ax[row, col].set_xlabel(r'$t$')
 
-# Add y-label
-plt.ylabel(r'$\displaystyle\sum_{k = 1}^{500} (W_{t_k} - W_{t_{k - 1}})^2$')
+    # Add y-label
+    ax[row, col].set_ylabel(r'$\displaystyle\sum_{k = 1}^{n} (W_{t_k} - W_{t_{k - 1}})^2$')
+    
+    # Give plot a title
+    ax[row, col].set_title(f'$n$ = {n}')
+    
+    # Add legend
+    ax[row, col].legend()
 
 # Add title to plot
-plt.title(r'Approximate Quadratic Variation')
-
-# Add legend
-plt.legend()
+plt.suptitle(r'Approximate Quadratic Variation')
 
 # Save the figure
 plt.savefig(path + r'ex4-6.png')
 
 plt.show()
 \end{lstlisting}
-\end{multicols}
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Approximate Quadratic Variation Result}
-If we regenerate the graph with 100,000 steps the result is indistinguishable from the graph of $t$.
+From the four subplots, we see that $\lim\limits_{n\to\infty} \sum_{k = 1}^n \left(W_{t_k} - W_{t_{k - 1}}\right)^2 = T$.
 \begin{figure}
 \centering
-\includegraphics[scale = 0.4]{\pathtoimages/ex4-6.png}
+\includegraphics[scale = 0.25]{\pathtoimages/ex4-6.png}
 \end{figure}
 \end{frame}
 
