@@ -19,7 +19,7 @@ This is an incomplete list of references used to create the notes for this cours
 
 * James Stewart, *Calculus*, Brooke/Cole, 3rd ed., 1995.
 * Walter Rudin, *Principles of Mathematical Analysis*, McGraw-Hill, 1976.
-* Charles Pugh, *Real Mathematical Analysis*, Springer, 2002
+* Charles Pugh, *Real Mathematical Analysis*, Springer, 2002.
 * Serge Lang, *Linear Algebra*, Springer, 3rd ed., 1987.
 * Steven Roman, *Advanced Linear Algebra*, Springer, 2nd ed., 2005.
 * Morris DeGroot and Mark Schervish, *Probability and Statistics*, Pearson, 4th ed., 2013.
