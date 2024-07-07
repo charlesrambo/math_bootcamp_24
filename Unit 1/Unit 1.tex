@@ -382,7 +382,7 @@ Use Python to graph $f$ and $f'$ on the interval $[-2, 2]$, where
 $$
 f(x) = \begin{cases} x e^{-x^2 - x^{-2}}, & x \neq 0\\ 0,	& x= 0.\end{cases}
 $$
-Use a numerical approximation $f'$ with $h = 0.001$.
+Use a numerical approximation for $f'$ with $h = 0.001$.
 \end{Example}
 \end{frame}
 
@@ -566,7 +566,7 @@ If $f$ is continuous on a closed interval $[a, b]$, then $f$ attains a global ma
 Suppose $x = c$ is a critical number, i.e. $c$ is in the domain of $f$ and $f'(c)$ is 0 or undefined.
 \begin{itemize}
 \item[(a)] If $f'$ changes from positive to negative at $x = c$, then $f$ has a local maximum at $x = c$.
-\item[(b)] $f'$ changes from negative to positive at $x = c$, then $f$ has a local minimum at $x = c$.
+\item[(b)] If $f'$ changes from negative to positive at $x = c$, then $f$ has a local minimum at $x = c$.
 \item[(c)] If $f'$ does not change sign at $x = c$, then $f$ has no local extremum at $x = c$.
 \end{itemize}
 \end{frame}
@@ -709,7 +709,7 @@ $$
 \end{tikzpicture}
 \end{center}
 
-The rectangles in the right figure do a better job of approximating the area under the curve. This is because the partition is the second figure is ``finer", i.e. uses more $x$-values, than the first.
+The rectangles in the right figure do a better job of approximating the area under the curve. This is because the partition in the second figure is ``finer", i.e. uses more $x$-values, than the first.
 \end{frame}
 
 \begin{frame}
@@ -1013,7 +1013,7 @@ $$
 \begin{multicols}{2}
 {\small 
 \begin{itemize}
-\item $\displaystyle \int x^n\ dx = \frac{1}{n+ 1} x^{n+ 1} + C$, $n\neq -1$
+\item $\displaystyle \int x^n\ dx = \frac{x^{n+ 1}}{n+ 1} + C$, $n\neq -1$
 \item $\displaystyle \int \frac{dx}{x} = \ln|x| + C$	
 \item $\displaystyle \int \frac{dx}{1 + x^2} = \arctan x + C$	
 \item $\displaystyle \int e^x\ dx  = e^x + C$
@@ -1389,7 +1389,7 @@ Consider a series $\displaystyle S = \sum_{k = 1}^\infty a_k$. Its {\bf $\boldsy
  \begin{frame}[t]
  \frametitle{Partial Fraction Decomposition Example}
  \begin{Example}
- Express $\dfrac{x - 2}{x(x - 3)}$ in partial fractions.
+Rewrite $\dfrac{x - 2}{x(x - 3)}$ using partial fraction decomposition.
  \end{Example}
 
   \end{frame}
