@@ -16,7 +16,7 @@
 
 | Meeting ID | Link |
 |---|---|
-| 323 227 3857 | [https://ucla.zoom.us/j/3232273857](https://ucla.zoom.us/j/3232273857) |
+| 945 6842 7488 | [https://ucla.zoom.us/j/94568427488) |
 
 **References:**
 
