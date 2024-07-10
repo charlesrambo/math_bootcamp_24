@@ -1,0 +1,143 @@
+\documentclass[11pt, a4paper]{article}
+%\usepackage{geometry}
+\usepackage[inner=1.25cm,outer=1.25cm,top=2.25cm,bottom=2.25cm]{geometry}
+\pagestyle{empty}
+\usepackage{graphicx}
+\usepackage{fancyhdr, lastpage, bbding, pmboxdraw}
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.7,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=darkblue,citecolor=darkblue,linkcolor=darkred,bookmarksnumbered,plainpages=false]{hyperref}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\pagestyle{fancyplain}
+\fancyhf{}
+\lhead{ \fancyplain{}{Course Name} }
+%\chead{ \fancyplain{}{} }
+\rhead{ \fancyplain{}{\today} }
+%\rfoot{\fancyplain{}{page \thepage\ of \pageref{LastPage}}}
+%\fancyfoot[RO, LE] {page \thepage\ of \pageref{LastPage} }
+\thispagestyle{plain}
+
+%%%%%%%%%%%% LISTING %%%
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\usepackage{verbatim} % used to display code
+\usepackage{fancyvrb}
+\usepackage{acronym}
+\usepackage{amsthm}
+\VerbatimFootnotes % Required, otherwise verbatim does not work in footnotes!
+
+
+
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.93}
+
+
+
+\lstset{
+%language=bash,                          % Code langugage
+basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
+keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+commentstyle=\color{gray},              % Comments font
+numbers=left,                           % Line nums position
+numberstyle=\tiny,                      % Line-numbers fonts
+stepnumber=1,                           % Step between two line-numbers
+numbersep=5pt,                          % How far are line-numbers from code
+backgroundcolor=\color{lightlightgray}, % Choose background color
+frame=none,                             % A frame around the code
+tabsize=2,                              % Default tab size
+captionpos=t,                           % Caption-position = bottom
+breaklines=true,                        % Automatic line breaking?
+breakatwhitespace=false,                % Automatic breaks only at whitespace?
+showspaces=false,                       % Dont make spaces visible
+showtabs=false,                         % Dont make tabls visible
+columns=flexible,                       % Column format
+morekeywords={__global__, __device__},  % CUDA specific keywords
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{center}
+{\Large \textsc{UCLA MFE Math Bootcamp}}
+\end{center}
+\begin{center}
+Summer 2024
+\end{center}
+%\date{September 26, 2014}
+
+\begin{center}
+\rule{6in}{0.4pt}
+\begin{minipage}[t]{0.85\textwidth}
+\begin{tabular}{llcccll}
+\textbf{Instructor:} & Charles Rambo & & &  & \textbf{Time:} & TThu 5:30 -- 7:00 PDT \\
+\textbf{Email:} &  \href{mailto:charles.tutoring@gmail.com}{charles.tutoring@gmail.com} & & & &	& 
+\end{tabular}
+\end{minipage}
+\rule{6in}{0.4pt}
+\end{center}
+\vspace{.5cm}
+\setlength{\unitlength}{1in}
+\renewcommand{\arraystretch}{2}
+
+
+\noindent\textbf{Objective:}  This course is  designed to prepare incoming MFE students for the UCLA MFE program. It will be taught at an upper-division undergraduate level.
+\vskip.15in
+
+\noindent\textbf{Course Material:} Slides, homework assignments, and code snippets can be found on my personal GitHub:
+\begin{quote}
+\small \url{https://github.com/charlesrambo/math_bootcamp_24}
+\end{quote}
+
+\noindent\textbf{Zoom:} Meetings will be via Zoom. 
+\begin{center}
+\begin{tabular}{| l c | }\hline
+{\bf Meeting ID}		&	{\bf Link}\\\hline
+323 227 3857		&	\url{https://ucla.zoom.us/j/3232273857}\\\hline
+\end{tabular}
+\end{center}
+
+\noindent\textbf{References:} %\footnotemark
+This is an incomplete list of references used to create the notes for this course. You do not need to purchase any of the books listed.  
+\begin{itemize}
+\item James Stewart, {\textit{Calculus}}, Brooke/Cole, 3rd ed., 1995.
+\item Walter Rudin, {\textit{Principles of Mathematical Analysis}}, McGraw-Hill, 1976.
+\item Charles Pugh, {\textit{Real Mathematical Analysis}}, Springer, 2002.
+\item Serge Lang, {\textit{Linear Algebra}}, Springer, 3rd ed., 1987.
+\item Steven Roman, {\textit{Advanced Linear Algebra}}, Springer, 2nd ed., 2005.
+\item Morris DeGroot and Mark Schervish, {\textit{Probability and Statistics}}, Pearson, 4th ed., 2013.
+\item Marcos Lopez de Prado, {\textit{Machine Learning for Asset Managers}}, Cambridge University Press, 2020.
+\item  Martin Haugh,  {\textit{A Brief Introduction to Stochastic Calculus}}, Access date June 2024, $\langle$\url{https://www.columbia.edu/~mh2078/FoundationsFE/IntroStochCalc.pdf}$\rangle$, Columbia University, 2016. 
+\end{itemize} 
+
+% \footnotetext{Downloadable ebook versions are available on AeLP.}
+
+
+
+\vspace*{.15in}
+
+\noindent \textbf{Tentative Course Outline:}
+\begin{center}
+
+\begin{tabular}{| l | c | c| }
+\hline
+{\bf Unit}	&	{\bf Description}						&	{\bf Sessions}\\\hline
+1		& 	Calculus								&	July 9-18\\
+2		&	 Linear algebra and multivariable calculus		&	July 23-August 1\\
+3		&	Combinatorics, probability, and statistics		&	August 6-15\\
+4		&	Covariance matrices, PCA, and stochastic calculus&	 August 20-22\\\hline
+\end{tabular}
+\end{center}
+
+\vspace*{.15in}
+\noindent\textbf{Assignments and Grading Policy:} 
+There will be three homework assignments each worth 33\% of your grade. You must receive an average score of at least 70\% on the assignments to pass. One additional make-up assignment will be available for students that missed one or whose overall score is too low to pass. The assignments will be posted on my GitHub. Submit your solutions via email. If you choose to work in teams, only submit one assignment per team. Remember to place everyone's name on the top of the team's solutions. Groups may not contain more than four people. The course is P/NP. No letter grades will be given. 
+
+%%%%%% THE END 
+\end{document} 
