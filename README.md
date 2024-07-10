@@ -5,13 +5,18 @@
 **Instructor:** Charles Rambo  
 **Email:** [charles.tutoring@gmail.com](mailto:charles.tutoring@gmail.com)  
 **Time:** TThu 5:30 -- 7:00 PDT  
-**Zoom Link:** (Please see instructor for link)
 
 **Objective:** This course is designed to prepare incoming MFE students for the UCLA MFE program. It will be taught at an upper-division undergraduate level.
 
 **Course Material:** Slides, homework assignments, and code snippets can be found on the instructor's GitHub repository:
 
 * [math_bootcamp_24](https://github.com/charlesrambo/math_bootcamp_24)
+
+**Zoom:** Meetings will be via Zoom.
+
+| Meeting ID | Link |
+|---|---|
+| 323 227 3857 | [https://ucla.zoom.us/j/3232273857](https://ucla.zoom.us/j/3232273857) |
 
 **References:**
 
