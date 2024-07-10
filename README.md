@@ -16,7 +16,7 @@
 
 | Meeting ID | Link |
 |---|---|
-| 945 6842 7488 | [https://ucla.zoom.us/j/94568427488) |
+| 945 6842 7488 | [(https://ucla.zoom.us/j/94568427488)] |
 
 **References:**
 
