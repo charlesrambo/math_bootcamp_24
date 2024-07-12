@@ -603,17 +603,17 @@ Find all local extrema of $g(x) = x^4 - 4x^3$.
 \frametitle{L'H\^{o}pital's Rule}
 
 \begin{Theorem}[L'H\^{o}pital's Rule]
-Suppose $f$ and $g$ are differentiable on the open interval $(a, b)$ and $g' (x) \neq 0$ for all $x$ in $(a, b)$. If
+Suppose the functions $f$ and $g$ are defined on the open interval $(a, b)$, $a < c < b$, $f$ and $g$ are differentiable on $(a, b)\setminus\{c\}$, and $g' (x) \neq 0$ for all $x$ in $(a, b)\setminus\{c\}$. If
 $$
-\lim_{x\to a} \frac{f'(x)}{g'(x)} = L
+\lim_{x\to c} \frac{f'(x)}{g'(x)} = L
 $$
 and either
 $$
-\lim_{x\to a} f(x) = \lim_{x\to a} g(x) = 0\qquad\text{or}\qquad \lim_{x\to a} f(x) = \lim_{x\to a} g(x) = \infty,
+\lim_{x\to c} f(x) = \lim_{x\to c} g(x) = 0\qquad\text{or}\qquad \lim_{x\to c} f(x) = \lim_{x\to c} g(x) = \infty,
 $$
 then
 $$
-\lim_{x\to a} \frac{f(x)}{g(x)} = L.
+\lim_{x\to c} \frac{f(x)}{g(x)} = L.
 $$
 \end{Theorem}
 \end{frame}
