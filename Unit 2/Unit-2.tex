@@ -131,7 +131,7 @@ The set $V = \{f:\mathbb{R}\to\mathbb{R}| f\ \text{continuous}\}$ is a real vect
 $$
 (f + g)(x) = f(x) + g(x)
 $$
-and $\alpha$ in $\mathbb{R}$ we define $\alpha f$ to be the function which satisfies 
+and for $\alpha$ in $\mathbb{R}$ we define $\alpha f$ to be the function which satisfies 
 $$
 (\alpha f)(x) = \alpha f(x).
 $$
@@ -155,7 +155,7 @@ If the set is not linearly independent, then it is {\bf linearly dependent}.
 \begin{Definition}
 The {\bf span} of $\{{\boldsymbol v_1}, {\boldsymbol v_2},\ldots, {\boldsymbol v_m}\}$ is 
 $$
-\text{span}\{{\boldsymbol v_1}, {\boldsymbol v_2},\ldots, {\boldsymbol v_m}\} = \{\alpha_1{\boldsymbol v_1} + \alpha_2{\boldsymbol v_2} + \ldots + \alpha_m {\boldsymbol v_m} : \alpha_i\in\mathbb{R}\}.
+\text{span}\{{\boldsymbol v_1}, {\boldsymbol v_2},\ldots, {\boldsymbol v_m}\} = \{\alpha_1{\boldsymbol v_1} + \alpha_2{\boldsymbol v_2} + \ldots + \alpha_m {\boldsymbol v_m} | \alpha_i\in\mathbb{R}\}.
 $$
 \end{Definition}
 \end{frame}
@@ -187,7 +187,7 @@ then $\{{\boldsymbol e_1}, {\boldsymbol e_2}, \ldots, {\boldsymbol e_{n - 1}}, {
 \begin{frame}
 \frametitle{Basis Elements and Independence}
 \begin{Theorem}
-Let $V$ be a vector space, and suppose $\{ {\boldsymbol v_1}, {\boldsymbol v_2},\ldots, {\boldsymbol v_m}\}$ is a basis of $V$. If ${\boldsymbol w_1}, {\boldsymbol w_2}, \ldots {\boldsymbol w_n}$ are elements fo $V$ and $n > m$, then ${\boldsymbol w_1}, {\boldsymbol w_2},\ldots, {\boldsymbol w_n}$ are linearly dependent.
+Let $V$ be a vector space, and suppose $\{ {\boldsymbol v_1}, {\boldsymbol v_2},\ldots, {\boldsymbol v_m}\}$ is a basis of $V$. If ${\boldsymbol w_1}, {\boldsymbol w_2}, \ldots {\boldsymbol w_n}$ are elements of $V$ and $n > m$, then ${\boldsymbol w_1}, {\boldsymbol w_2},\ldots, {\boldsymbol w_n}$ are linearly dependent.
 \end{Theorem}
 \end{frame}
 
@@ -363,7 +363,7 @@ $$
 
 \begin{frame}
 \frametitle{Coordinate Representation of a Vector}
-For $V$ a vectors space with basis $\mathcal{B} = ({\boldsymbol v_1}, {\boldsymbol  v_2},\ldots, {\boldsymbol  v_n})$. We can represent an arbitrary ${\boldsymbol  w}$ in $V$ using the unique linear combination of the elements of $\mathcal{B}$. Specifically, 
+For $V$ a vector space with basis $\mathcal{B} = ({\boldsymbol v_1}, {\boldsymbol  v_2},\ldots, {\boldsymbol  v_n})$. We can represent an arbitrary ${\boldsymbol  w}$ in $V$ using the unique linear combination of the elements of $\mathcal{B}$. Specifically, 
 $$
 {\boldsymbol  w} = \alpha_1 {\boldsymbol  v_1} + \alpha_2 {\boldsymbol  v_2} +\ldots \alpha_n {\boldsymbol  v_n}.
 $$
@@ -375,7 +375,7 @@ $$
 
 \begin{frame}
 \frametitle{Linear Transformations and Matrices}
-There is a matrix representation of any linear transformations between finite dimensional vector spaces. Consider vector space $U$ with ordered basis $\mathcal{B} = ({\boldsymbol u_1}, {\boldsymbol  u_2},\ldots, {\boldsymbol  u_m})$, and vector space $V$ with ordered basis $\mathcal{C} = ({\boldsymbol  v_1}, {\boldsymbol  v_2},\ldots, {\boldsymbol  v_n})$. Suppose $T: U\to V$ such that
+There is a matrix representation of any linear transformation between finite dimensional vector spaces. Consider vector space $U$ with ordered basis $\mathcal{B} = ({\boldsymbol u_1}, {\boldsymbol  u_2},\ldots, {\boldsymbol  u_m})$, and vector space $V$ with ordered basis $\mathcal{C} = ({\boldsymbol  v_1}, {\boldsymbol  v_2},\ldots, {\boldsymbol  v_n})$. Suppose $T: U\to V$ such that
 $$
 T(u_j) = \alpha_{1 j} {\boldsymbol  v_1} + \alpha_{2 j} {\boldsymbol  v_2} + \ldots + \alpha_{nj} {\boldsymbol  v_n}.
 $$
@@ -878,10 +878,10 @@ for i in range(trials):
 print(f'The number of norms less than the norm of v - proj_U(v) is {np.sum(norm_vals < min_norm)}.')
 \end{lstlisting}
 The output reads
-\begin{center}
-\texttt
-The number of norms less than the norm of v - proj\_U(v) is 0.
-\end{center}
+\begin{quote}
+\small
+\texttt{The number of norms less than the norm of v - proj\_U(v) is 0.}
+\end{quote}
 This was the expected result!
 \end{frame}
 
