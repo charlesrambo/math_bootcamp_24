@@ -1629,14 +1629,14 @@ Find the shortest distance from the point $(1, 0, -2)$ to the plane $x + 2y + z 
 \tiny
 Consider $f:\mathbb{R}^2\to\mathbb{R}$ and define the closed region
 $$
-R = [a, b]\times [c, d] = \{(x, y)\in\mathbb{R}^2: a\leq x\leq b,\ c\leq y\leq d\}.
+R = [a, b]\times [c, d] = \{(x, y)\in\mathbb{R}^2| a\leq x\leq b,\ c\leq y\leq d\}.
 $$
 Consider partition $P$ of $R$ into subrectangles $R_{ij} = [x_{i - 1}, x_i]\times [y_{i - 1}, y_i]$, where
 \begin{align*}
 a &= x_0 \leq x_1 < \ldots < x_m = b\\
 c &= y_0 \leq y_1 < \ldots < y_n = d\\
 \end{align*}
-Select $(s_{ij}, t_{ij})$ from $R_{ij}$. The area of $R_{ij}$ is $\Delta A_{ij} = \Delta x_i\Delta y_j$. Define the mesh $\|P\| = \max_{i, j}\{\Delta A_{ij}\}$. Then
+Select $(s_{ij}, t_{ij})$ from $R_{ij}$. The area of $R_{ij}$ is $\Delta A_{ij} = \Delta x_i\Delta y_j$. Define the mesh $\|P\| = \max\limits_{i, j}\{\Delta A_{ij}\}$. Then
 $$
 \iint_R f(x, y)\ dA = \lim_{\|P\|\to 0} \sum_{i = 1}^m\sum_{j = 1}^n f(s_{ij}, t_{ij})\ \Delta A_{ij}
 $$
