@@ -1315,7 +1315,7 @@ $$
 \frac{\partial f}{\partial x_i} = \lim_{h\to 0} \frac{f(x_1, x_2,\ldots, x_i + h,\ldots, x_n) - f(x_1, x_2,\ldots, x_i,\ldots, x_n)}{h}.
 $$
 \end{Definition}
-The most common case is $f:\mathbb{R}^2\to \mathbb{R}$ such that $z = f(x, y)$. Then the two partials are
+The most common case is $f:\mathbb{R}^2\to \mathbb{R}$ and $z = f(x, y)$. Then the two partials are
 $$
 f_x(x, y) = \frac{\partial z}{\partial x} = \lim_{h\to 0 } \frac{f(x + h, y) - f(x, y)}{h}
 $$
@@ -1368,7 +1368,7 @@ Suppose $f(x, y, z) = \sqrt{xyz}$. Approximate $f(3.9, 4.2, 3.8)$.
 \begin{frame}
 \frametitle{The Chain Rule}
 
-Suppose $u$ is a differentiable function of $n$ variables $x_1, x_2,\ldots, x_n$ and each $x_j$ is a function of the $m$ variables $t_1, t_2,\ldots, t_m$ such that the partial derivate $\frac{\partial x_j}{\partial t_i}$ exists each for all $i$ and $j$. Then $u$ is a function of $t_1, t_2,\ldots, t_m$ and
+Suppose $u$ is a differentiable function of $n$ variables $x_1, x_2,\ldots, x_n$ and each $x_j$ is a function of the $m$ variables $t_1, t_2,\ldots, t_m$ such that the partial derivative $\frac{\partial x_j}{\partial t_i}$ exists each for all $i$ and $j$. Then $u$ is a function of $t_1, t_2,\ldots, t_m$ and
 $$
 \frac{\partial u}{\partial t_i} = \frac{\partial u}{\partial x_1}\frac{\partial x_1}{\partial t_i} + \frac{\partial u}{\partial x_2}\frac{\partial x_2}{\partial t_i} + \ldots + \frac{\partial u}{\partial x_n}\frac{\partial x_n}{\partial t_i}
 $$
@@ -1561,7 +1561,7 @@ def distance(pt):
 # Get the result   
 minimize(distance, x0 = [0, 0]) 
 \end{lstlisting}
-Another option is to use the constraint x + 2y + z - 4 = 0 and optimize with three variables .
+Another option is to use the constraint x + 2y + z - 4 = 0 and optimize with three variables.
 \end{frame}
 
 \begin{frame}
@@ -1571,7 +1571,7 @@ $$
 \frac{11}{6} \approx 1.83,\qquad \frac{5}{3} \approx 1.67\qquad\text{and}\qquad \frac{5\sqrt{6}}{6}\approx 2.04
 $$
 \begin{center}
-\includegraphics[scale = 0.4]{\pathtoimages/ex2-4.png}
+\includegraphics[scale = 0.4]{\pathtoimages/ex2-5.png}
 \end{center}
 \end{frame}
 
