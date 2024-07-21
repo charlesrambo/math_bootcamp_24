@@ -141,7 +141,7 @@ $$
 \begin{frame}
 \frametitle{Linear Independence}
 \begin{Definition}
-Let $\{{\boldsymbol v_1}, {\boldsymbol v_2},\ldots, {\boldsymbol v_n}\}$ to be a set of elements of $V$. Then the set is {\bf linearly independent} if for $\alpha_1, \alpha_2,\ldots, \alpha_n$ in $\mathbb{R}$, 
+Let $\{{\boldsymbol v_1}, {\boldsymbol v_2},\ldots, {\boldsymbol v_n}\}$ be a set of elements of $V$. Then the set is {\bf linearly independent} if for $\alpha_1, \alpha_2,\ldots, \alpha_n$ in $\mathbb{R}$, 
 $$
 \alpha_1 {\boldsymbol v_1} + \alpha_2 {\boldsymbol v_2}+\ldots + \alpha_n {\boldsymbol v_n} = {\boldsymbol 0} \qquad\text{implies}\qquad \alpha_i = 0\ \text{for all}\ i.
 $$
@@ -391,7 +391,7 @@ $$
 \begin{frame}[t]
 \frametitle{Linear Transformations and Matrices Example}
 \begin{Example}
-Consider $F:\mathbb{R}^3\to \mathbb{R}^2$ defined by $F(x, y, z) = (x, y)$. Write the matrix representation of $F$ in terms of the standard bases.
+Consider $F:\mathbb{R}^3\to \mathbb{R}^2$ defined by $F(x, y, z) = (x, y)$. Write the matrix representation of $F$ in terms of the standard basis.
 \end{Example}
 
 \end{frame}
@@ -877,7 +877,7 @@ for i in range(trials):
     
 print(f'The number of norms less than the norm of v - proj_U(v) is {np.sum(norm_vals < min_norm)}.')
 \end{lstlisting}
-The output reads
+The output reads:
 \begin{quote}
 \small
 \texttt{The number of norms less than the norm of v - proj\_U(v) is 0.}
@@ -897,20 +897,19 @@ plt.style.use('seaborn')
 # Use LaTeX
 plt.rcParams['text.usetex'] = True
 
-# Plot figure
-fig, ax = plt.subplots(1, 1, dpi = 150)
+# Plot histogram
+plt.hist(norm_vals, label = r"$\|\vec{v} - \vec{u}'\|$", bins = int(np.sqrt(trials)))
 
-ax.hist(norm_vals, label = r"$\|\vec{v} - \vec{u}'\|$", bins = int(np.sqrt(trials)))
+# Plot vertical line
+plt.axvline(min_norm, ymin = 0, ymax = 1, label = r'$\| \vec{v} - proj_U(\vec{v})\|$', 
+           color = 'red')
 
-ax.axvline(min_norm, ymin = 0, ymax = 1, label = r'$\| \vec{v} - proj_U(\vec{v})\|$', 
-             color = 'red')
-
-ax.set_title(r"$\min_{\vec{u}'\in U} \| \vec{v} - \vec{u}'\| = $ " 
-	+ f'{np.min(norm_vals):.5f};' + r' $\|\vec{v} - proj_{U}(\vec{v})\| = $ ' 
-	+ f'{min_norm:.5f}.', fontsize = 15)
+# Give plot a title
+plt.title(r"$\min_{\vec{u}'\in U} \| \vec{v} - \vec{u}'\| = $ " + f'{np.min(norm_vals):.5f};' +
+             r' $\|\vec{v} - proj_{U}(\vec{v})\| = $ ' + f'{min_norm:.5f}.', fontsize = 15)
 
 # Create a legend
-ax.legend(fontsize = 12)
+plt.legend(fontsize = 12)
 
 # Save the figure
 plt.savefig(path + r'ex2-2.png')
@@ -990,15 +989,15 @@ tan_line = lambda x: a_tl * u1(x) + b_tl * u2(x)
 x_vals = np.linspace(0, 1, 100)
 
 # Plot results
-plt.plot(x_vals, [proj(x) for x in x_vals], label = 'Projection')
-plt.plot(x_vals, [tan_line(x) for x in x_vals], label = 'Tangent Line')
-plt.plot(x_vals, [np.exp(x) for x in x_vals], label = 'True')
+plt.plot(x_vals, proj(x_vals), label = 'Projection')
+plt.plot(x_vals, tan_line(x_vals), label = 'Tangent Line')
+plt.plot(x_vals, np.exp(x_vals), label = 'True')
 
 # Create a legend
 plt.legend()
-# Save the figure
+
+# Save the figure and show figure
 plt.savefig(path + r'ex2-3.png')
-# Show plot
 plt.show()
 \end{lstlisting}
 \end{frame}
@@ -1258,7 +1257,7 @@ for i in range(len(evals)):
     print(f'eigenvalue: {evals[i]:.2f}; eigenvector: {evecs[:, i]}\n')
  \end{lstlisting}
 
-The output is shown below
+The output is shown below:
 \begin{figure}
 \centering
 \includegraphics[scale = 0.5]{\pathtoimages/ex2-4.png}
