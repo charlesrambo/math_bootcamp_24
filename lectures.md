@@ -7,3 +7,5 @@
 **[Lecture 3](https://ucla.zoom.us/rec/share/rMVPmT4st70Icg64eUUAVju-E4lFlMnjMWmWg79g97MMpEKmr9sWFLaxA5U5dqxV.N-xHn2fDcMX5uuSS)** Fundamental theorem of Calculus, integration by parts, ODEs, sequences and series
 
 **[Lecture 4](https://ucla.zoom.us/rec/share/xcX41Zr3sbItvKJ2G8EO7F_IHU73peBoEifFCQ6n1peM1rDGLHlqAnaQvHD2gPYs.PiD_veWyNRazBXLh)** Series convergence/divergence tests, power series, power series manipulation, and the time value of money
+
+**[Lecture 5](https://ucla.zoom.us/rec/share/OMsg1pV8OwSl3szxMHyFoEPOXrSdYGX9WtXwE1UvF25u-gPhSLRwcrXcgQx_Wjdn.jyAwVWRphJBpYOtz)** NPV of cash flows that increase at a constant rate, vector spaces, subspaces, inner products, norms, distance metrics, and projections 
