@@ -9,3 +9,5 @@
 **[Lecture 4](https://ucla.zoom.us/rec/share/xcX41Zr3sbItvKJ2G8EO7F_IHU73peBoEifFCQ6n1peM1rDGLHlqAnaQvHD2gPYs.PiD_veWyNRazBXLh)** Series convergence/divergence tests, power series, power series manipulation, and the time value of money
 
 **[Lecture 5](https://ucla.zoom.us/rec/share/OMsg1pV8OwSl3szxMHyFoEPOXrSdYGX9WtXwE1UvF25u-gPhSLRwcrXcgQx_Wjdn.jyAwVWRphJBpYOtz)** NPV of cash flows that increase at a constant rate, vector spaces, subspaces, inner products, norms, distance metrics, and projections 
+
+**[Lecture 6](https://ucla.zoom.us/rec/share/nA5Yw_qf-yc5aAQMBa60Vb-Tqx8tJFtA7ZIbHh3wxwSdiIDXESBY3rkSCBufkbpF.KSrvfyVbX-KasjBU)** Projections, the Gram-Schmidt Orthogonalization process, best approximation theorem, determinants, Cramer's rule, eigenvectors and eigenvalues
