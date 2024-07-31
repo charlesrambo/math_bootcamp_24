@@ -327,7 +327,7 @@ whenever $P(B) > 0$. If $P(B) = 0$ the conditional probability is undefined.
 \end{center}
 \begin{Example}
 \tiny
-A loan originator has a 50,000 observation loan default data set. This originator places applicants' credit into one of three categories: excellent, good, and poor. Details about this data set are shown above. What is the probability of default given that an applicant's credit is placed into the category good?
+A loan originator has a 50,000 observation loan data set. This originator places applicants' credit into one of three categories: excellent, good, and poor. Details about this data set are shown above. What is the probability of default given that an applicant's credit is placed into the category good?
 \end{Example}
 \end{frame}
 
@@ -414,7 +414,7 @@ $$
 There are three types of random variables: {\it discrete} random variables, {\it continuous} random variables, and {\it mixed} random variables. 
 \begin{itemize}
 \item A discrete random variable is a random variable whose range is either finite or countably infinite. 
-\item A continuous random variable is a random variable whose range is an interval in $\mathbb{R}$. 
+\item A continuous random variable is a random variable whose range is a union of intervals in $\mathbb{R}$. 
 \item A mixed random variable is partially discrete and partially continuous.
 \end{itemize}
 
@@ -1278,7 +1278,7 @@ Suppose $X\sim{\mathcal{U}(-1, 1)}$. Calculate the variance of $X - 2 X^2$.
 
 \end{frame}
 
-\subsection{Portfolio Construction}
+\subsection{Efficient Frontier}
 
 \begin{frame}
 \frametitle{Efficient Frontier}
@@ -1364,6 +1364,9 @@ def port_sigma(w):
 \frametitle{Portfolio Construction Python Code}
 
 \begin{lstlisting}[language=Python]
+# Get weights for minimum variance portfolio; no short positions
+w_min_var = minimize_scalar(port_sigma, bounds = (0, 1), method = 'bounded').x
+                            
 # Define number of samples
 samples = 100
 
