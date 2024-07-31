@@ -11,3 +11,5 @@
 **[Lecture 5](https://ucla.zoom.us/rec/share/OMsg1pV8OwSl3szxMHyFoEPOXrSdYGX9WtXwE1UvF25u-gPhSLRwcrXcgQx_Wjdn.jyAwVWRphJBpYOtz)** NPV of cash flows that increase at a constant rate, vector spaces, subspaces, inner products, norms, distance metrics, and projections 
 
 **[Lecture 6](https://ucla.zoom.us/rec/share/nA5Yw_qf-yc5aAQMBa60Vb-Tqx8tJFtA7ZIbHh3wxwSdiIDXESBY3rkSCBufkbpF.KSrvfyVbX-KasjBU)** Projections, the Gram-Schmidt Orthogonalization process, best approximation theorem, determinants, Cramer's rule, eigenvectors and eigenvalues
+
+**[Lecture 7](https://ucla.zoom.us/rec/share/i0ZJu94ehj8DrGUCfXVzEAPZB4dAvG6jne4ySxH8y74e4M_vYNANiOM9sJyOkuoz.jOrLI4Rbpcjcon2_)** Basis of eigenvectors, the spectral theorem, partial derivatives, the chain rule, gradient vectors, multivariable optimization
