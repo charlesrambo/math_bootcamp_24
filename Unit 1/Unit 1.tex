@@ -876,30 +876,30 @@ def riemann_sum(f, P, pts):
     P = np.sort(P)
 
     # Calculate Delta x
-    dx_vals = np.diff(P)
+    dx_vals = np.diff(P) 
 
-    # Calculate the number of terms
-    # Note: dx_vals has one fewer element than P
-    N = len(dx_vals)
-    
     # Define T
     if pts == 'left':
 
-        T = [P[i] for i in range(0, N)]
+        T = P[:-1]
 
     elif pts == 'right':
 
-        T = [P[i + 1] for i in range(0, N)]
+        T = P[1:]
 
     elif pts == 'mid':
         
-        T = [0.5 * P[i] + 0.5 * P[i + 1] for i in range(0, N)]
+        T = (P[:-1] + P[1:])/2
         
-    # Get area of rectangles
-    rectangles = [f(T[i]) * dx_vals[i] for i in range(0, N)]
+    else:
+        
+        raise Exception('Currently only left, right, and midpoints are supported!')
+        
+    # Get area of rectangles; assumes f is vectorized
+    rectangle_areas = f(T) * dx_vals
     
     # Return sum
-    return np.sum(rectangles)
+    return np.sum(rectangle_areas)
 \end{lstlisting}
 \end{frame}
 
