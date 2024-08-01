@@ -146,7 +146,7 @@ $$
 \begin{frame}[t]
 \frametitle{$n$ Elements of $k$ Types}
 \begin{Example}
-How many unique rearrangements of the letters in word BANANA are there?
+How many unique rearrangements of the letters in the word BANANA are there?
 \end{Example}
 \end{frame}
 
@@ -221,7 +221,7 @@ More generally, for $A_1, A_2,\ldots A_n$, the number of elements in $\displayst
 \frametitle{Inclusion--Exclusion Principle Example}
 \tiny
 \begin{Example}
-There are 100 students enrolled in the class of 2025. Sixty-five students are taking statistical arbitrage, 43 are taking credit markets, and 37 are taking behavioral finance. If 23 students are taking statistical arbitrage and credit markets, 15 are taking statistical arbitrage and behavioral finance, and 20 are taking credit markets and behavioral finance, how many students are taking all three classes?
+There are 100 students enrolled in the UCLA MFE class of 2025. Sixty-five students are taking statistical arbitrage, 43 are taking credit markets, and 37 are taking behavioral finance. If 23 students are taking statistical arbitrage and credit markets, 15 are taking statistical arbitrage and behavioral finance, and 20 are taking credit markets and behavioral finance, how many students are taking all three classes?
 \end{Example}
 \end{frame}
 
@@ -354,7 +354,7 @@ $$
 \frametitle{Bayes' Rule Example}
 \small
 \begin{Example}
-Suppose the probability that an unskilled asset manager beats the market is 50\%, and the probability that a skilled asset manager beats the market is 60\%. If 10\% of asset managers are skilled, what is the probability that an asset manager is skilled given that she beats the market?
+Assume the probability that an unskilled asset manager beats the market is 50\%, and the probability that a skilled asset manager beats the market is 60\%. If 10\% of asset managers are skilled, what is the probability that an asset manager is skilled given that she beats the market?
 \end{Example}
 
 \end{frame}
@@ -414,7 +414,7 @@ $$
 There are three types of random variables: {\it discrete} random variables, {\it continuous} random variables, and {\it mixed} random variables. 
 \begin{itemize}
 \item A discrete random variable is a random variable whose range is either finite or countably infinite. 
-\item A continuous random variable is a random variable whose range is a union of intervals in $\mathbb{R}$. 
+\item A continuous random variable is a random variable whose range is uncountable.
 \item A mixed random variable is partially discrete and partially continuous.
 \end{itemize}
 
@@ -597,7 +597,7 @@ where $f$ is the pdf of $X$.
 \begin{frame}
 \frametitle{Properties of CDFs}
 \small
-The cumulative distribution function $F$ of a continuous random variable $X$ satisfies the following properties.
+The cumulative distribution function $F$ of a continuous random variable $X$ with probability density function $f$ satisfies the following properties.
 \begin{multicols}{2}
 \begin{enumerate}
 \item[(a)] $0 \leq F(x) \leq 1$
@@ -606,7 +606,7 @@ The cumulative distribution function $F$ of a continuous random variable $X$ sat
 \item[(d)] $\displaystyle\lim_{x\to\infty} F(x) = 1$
 \item[(e)] $P(a < X \leq b) = F(b) - F(a)$
 \item[(f)] $F$ is continuous 
-\item[(g)] $F'(x) = f(x)$ wherever the derivative exists
+\item[(g)] $F'(x) = f(x)$ whenever $F'$ exists
 \end{enumerate}
 \end{multicols}
 All of these, except (g), hold for discrete random variables as well.
@@ -835,7 +835,7 @@ $$
 \begin{Example}
 Suppose that the pmf of $N$ is
 $$
-p(n) = \begin{cases} \left(\frac{1}{2}\right)^n,	&	n = 1, 2 \ldots\\ 0,	&\text{otherwise.}\end{cases}
+p(n) = \begin{cases} \left(\frac{1}{2}\right)^n,	&	n = 1, 2 ,\ldots\\ 0,	&\text{otherwise.}\end{cases}
 $$
 Calculate $E[N]$.
 \end{Example}
@@ -1196,7 +1196,7 @@ In Python the correlation between two variables can be calculated using \texttt{
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Correlation Example Python Code}
+\frametitle{Correlation Plot Python Code}
 \begin{multicols}{2}
 \begin{lstlisting}[language=Python]
 # Import modules
@@ -1250,7 +1250,7 @@ plt.show()
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Correlation Example Result}
+\frametitle{Correlation Plot}
 \begin{figure}
 \centering
 \includegraphics[scale = 0.3]{\pathtoimages/ex3-3.png}
@@ -1304,7 +1304,7 @@ The {\bf efficient frontier} is the set of portfolios which satisfy the conditio
 \begin{frame}
 \frametitle{Portfolio Construction}
 \begin{Example}
-Consider assets 1 and 2 with monthly expected returns of 1\% and 0.5\% and standard deviations of 10\% and 6\%, respectively. If the correlation between returns is 25\%,
+Consider assets 1 and 2 with monthly expected returns of 1\% and 0.5\% and standard deviations of 10\% and 6\%, respectively. Suppose the correlation between returns is 25\%.
 \begin{enumerate}
 \item[(a)] Find the minimum variance portfolio.
 \item[(b)] Graph the efficient frontier.
@@ -1510,8 +1510,17 @@ $$
 
 \end{frame}
 
+\begin{frame}[t]
+\frametitle{Law of Large Numbers Example}
+\begin{Example}
+\small
+Use an exponential distribution with $\lambda = 1$ to illustrate the Law of Large Numbers. Generate 100,000 samples each of size $n$, for $n = 100, 500, 1000,$ and $10,000$.
+\end{Example}
+
+\end{frame}
+
 \begin{frame}[fragile]
-\frametitle{Law of Large Numbers Python Example}
+\frametitle{Law of Large Numbers Example Python Code}
 
 \begin{lstlisting}[language=Python]
 # Import modules
@@ -1537,8 +1546,9 @@ fig, ax = plt.subplots(1, 4, sharex = True, sharey = True,
 for i, n in enumerate(n_vals):
     
     # Generate numbers of dimension trails x n
-    X = expon.rvs(size = (trials, n))   
-     
+    # Scale is 1/lambda; default is 1 so unnecessary
+    X = expon.rvs(scale = 1/1, size = (trials, n))
+         
     # Take mean of each row and make histogram
     ax[i].hist(X.mean(axis = 1), bins = int(np.log(n)), density = True)
     ax[i].vlines(x = 1, ymin = 0, ymax = 35, linestyle = 'dashed', 
@@ -1553,7 +1563,7 @@ for i, n in enumerate(n_vals):
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Law of Large Numbers Python Example}
+\frametitle{Law of Large Numbers Example Python Code}
 
 \begin{lstlisting}[language=Python]
 # Clear up a little RAM
@@ -1574,7 +1584,7 @@ print(f'This program took {time.perf_counter() - start_time:.3f} seconds.')
 
 
 \begin{frame}
-\frametitle{Law of Large Numbers Python Result}
+\frametitle{Law of Large Numbers Result}
 \begin{figure}
 \centering
 \includegraphics[scale = 0.40]{\pathtoimages/ex3-5.png}
