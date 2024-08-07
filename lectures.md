@@ -15,3 +15,5 @@
 **[Lecture 7](https://ucla.zoom.us/rec/share/i0ZJu94ehj8DrGUCfXVzEAPZB4dAvG6jne4ySxH8y74e4M_vYNANiOM9sJyOkuoz.jOrLI4Rbpcjcon2_)** Basis of eigenvectors, the spectral theorem, partial derivatives, the chain rule, gradient vectors, multivariable optimization
 
 **[Lecture 8](https://ucla.zoom.us/rec/share/cLaKMcPJq9FYmjhyYWOuJ6N-b9Vac-naOOUlm-jI3O3485BZuAFqOG6aPtiNu3CP.NY3Kz2_h61eNgKnX)** Lagrange multipliers, multivariable integration, stars-and-bars, the pigeonhole principle, the inclusion-exclusion principle
+
+**[Lecture 9](https://ucla.zoom.us/rec/share/gIYnfxETgZDtSYhU1-JmVRla54YiVpYIxAEieDAw5ryMYFNh8opIWXF_NlH3llp3.iWwj11jtpgELusGH)** Inclusion-exclusion principle, sigma-algebras, probability spaces, Bayes' rule, random variables, uniform distribution, bionomial distribution, Poisson distribution, normal distribution
