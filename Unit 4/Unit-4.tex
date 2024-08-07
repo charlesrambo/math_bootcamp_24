@@ -136,10 +136,14 @@ np.random.seed(0)
 parts = ['a', 'b', 'c', 'd']
 
 # Create list of covariance matrices
-covs = [np.array([[1, 0], [0, 1]]), 
-        np.array([[1, 0.5], [0.5, 1]]), 
-        np.array([[1, -0.5], [-0.5, 1]]), 
-        np.array([[1, 1], [1, 1]])]
+covs = [np.array([[1, 0], 
+					[0, 1]]), 
+        	np.array([[1, 0.5], 
+					[0.5, 1]]), 
+        	np.array([[1, -0.5], 
+					[-0.5, 1]]), 
+        	np.array([[1, 1], 
+					[1, 1]])]
 
 # Set up subplots
 fig, ax = plt.subplots(2, 2, sharex = True, sharey = True, figsize = (10, 7))
@@ -194,7 +198,7 @@ In the sample covariance matrix, we divide by $n-1$ instead of $n$. Using the \t
 \begin{frame}[fragile]
 \frametitle{Sample Covariance Matrix Example}
 \small 
-Here is some code to get the sample covariance matrix for the {\it current} S\&P constituents. The uploaded data are the available daily constituents returns from January 1, 2019 to May 31, 2024. The data source is {\it Yahoo! Finance}. Check out the Unit 4 Code Snippets to see how the data were extracted.
+Here is some code to get the sample covariance matrix for the {\it current} S\&P constituents. The uploaded data are the daily constituents' returns from January 1, 2019 to May 31, 2024 which are available over the whole time range. The data source is {\it Yahoo! Finance}. Check out the Unit 4 Code Snippets to see how the data were extracted.
 \begin{lstlisting}[language=Python]
 # Import modules
 import pandas as pd
@@ -327,7 +331,7 @@ evecs, evals = evecs[idx], evals[idx]
 # Convert the observations to a numpy array
 X = data.values
 
-# Get the mean of each industry
+# Get the mean of each firm's return
 x_bar = X.mean(axis = 0)
 
 # Demean X
@@ -342,7 +346,7 @@ x, y = zip(*loadings)
 # Get scatter plot
 plt.scatter(x, y)
 
-# Create x- and y labels
+# Create x- and y-abels
 plt.xlabel('PCA1'); plt.ylabel('PCA2')
 
 # Give the plot a title
