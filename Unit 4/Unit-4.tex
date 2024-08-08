@@ -463,7 +463,7 @@ evals_c, evecs_c = np.linalg.eigh(C)
 # Make lam_min small positive outside of np.isclose threshold
 lam_min = 1e-7
 
-# Replace with smallest positive
+# Replace eigenvalues that are too small
 evals_c[evals_c < lam_min] = lam_min
 
 # Reconstruct correlation matrix
@@ -574,7 +574,7 @@ def f(lam):
 lam_vals = np.linspace(lam_minus, lam_plus, 100)
 
 # Get density values
-f_vals = [f(lam) for lam in lam_vals]
+f_vals = f(lam_vals)
 
 # Plot histogram
 plt.hist(evals, density = True, bins = int(np.sqrt(N)), label = 'Simulated Distribution')
@@ -655,7 +655,7 @@ def f(lam):
 lam_vals = np.linspace(lam_minus, lam_plus, 100)
 
 # Get density values
-f_vals = [f(lam) for lam in lam_vals]
+f_vals = f(lam_vals)
 \end{lstlisting}
 \end{frame}
 
@@ -726,13 +726,6 @@ S_new = np.diag(stds) @ C_new @ np.diag(stds)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}
-\frametitle{$\epsilon$-$\delta$ Limit Definition on YouTube}
-Check out Marcos Lopez de Prado's talk. He covers covariance clipping and the Marchenko–Pastur distribution near the beginning  {\tiny(\url{https://www.youtube.com/watch?v=tODXAJDZtow})}.
-\begin{center}
-\includegraphics[scale = 0.30]{\pathtoimages/lopez_de_prado.png}
-\end{center}
-\end{frame}
 
 \section{Stochastic Calculus} 
 
@@ -995,7 +988,7 @@ for i, n in enumerate(n_vals):
     # Plot results
     for j in range(3):
         
-        ax[row, col].plot(np.linspace(1/n, 1, n), quad_var[j, :])
+        ax[row, col].plot(np.linspace(1/n, 1, n), quad_var[j, :], label = f'Brownian Motion {j}')
 
     # Plot t
     ax[row, col].plot(np.linspace(1/n, 1, n), np.linspace(1/n, 1, n), 
