@@ -17,3 +17,5 @@
 **[Lecture 8](https://ucla.zoom.us/rec/share/cLaKMcPJq9FYmjhyYWOuJ6N-b9Vac-naOOUlm-jI3O3485BZuAFqOG6aPtiNu3CP.NY3Kz2_h61eNgKnX)** Lagrange multipliers, multivariable integration, stars-and-bars, the pigeonhole principle, the inclusion-exclusion principle
 
 **[Lecture 9](https://ucla.zoom.us/rec/share/gIYnfxETgZDtSYhU1-JmVRla54YiVpYIxAEieDAw5ryMYFNh8opIWXF_NlH3llp3.iWwj11jtpgELusGH)** Inclusion-exclusion principle, sigma-algebras, probability spaces, Bayes' rule, random variables, uniform distribution, bionomial distribution, Poisson distribution, normal distribution
+
+**[Lecture 10](https://ucla.zoom.us/rec/share/1OD5XBQdvcBBwwRhMXNeoxHhSo6XEa_XESKwIb-i3Q3X20uHqGswU-pZkQqO0Gyr.vC3P3WPW1REeEckR)** Normal distribution, exponential distribution, expected values, variance, moments, the moment generating function, joint distributions, and marginal distributions
