@@ -19,3 +19,5 @@
 **[Lecture 9](https://ucla.zoom.us/rec/share/gIYnfxETgZDtSYhU1-JmVRla54YiVpYIxAEieDAw5ryMYFNh8opIWXF_NlH3llp3.iWwj11jtpgELusGH)** Inclusion-exclusion principle, sigma-algebras, probability spaces, Bayes' rule, random variables, uniform distribution, bionomial distribution, Poisson distribution, normal distribution
 
 **[Lecture 10](https://ucla.zoom.us/rec/share/1OD5XBQdvcBBwwRhMXNeoxHhSo6XEa_XESKwIb-i3Q3X20uHqGswU-pZkQqO0Gyr.vC3P3WPW1REeEckR)** Normal distribution, exponential distribution, expected values, variance, moments, the moment generating function, joint distributions, and marginal distributions
+
+**[Lecture 11](https://ucla.zoom.us/rec/share/gGIyGyShyZ3vwQoiSJEq6VTlyTQQcEykze5sDzFUN2ZVeOYbgxFY5cq4o1jUARI.4ovKsSmLXLPZGZ5O)** Covariance, correlation, Markov's inequality, Chebyshev's inequality, convergence in probability, the Law of Large Numbers, convergence in distribution, and the empirical cdf
