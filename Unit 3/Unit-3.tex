@@ -1179,7 +1179,8 @@ Suppose $X_i$ and $Y_j$ are random variables for all $i$ and $j$, and $\alpha$ i
 \item[(a)] $\text{Cov}(X_1, X_2) = \text{Cov}(X_2, X_1)$
 \item[(b)] $\text{Cov}(X_1, X_1) = \text{Var}(X_1)$
 \item[(c)] $\text{Cov}(\alpha X_1, X_2) = \alpha \text{Cov}(X_1, X_2)$
-\item[(d)] $\displaystyle \text{Cov}\left(\sum_{i = 1}^m X_i, \sum_{j = 1}^n Y_j\right) = \sum_{i = 1}^m\sum_{j = 1}^n \text{Cov}(X_i, Y_j)$
+\item[(d)] $\text{Cov}(X,Y) = 0$ if $X$ and $Y$ are independent 
+\item[(e)] $\displaystyle \text{Cov}\left(\sum_{i = 1}^m X_i, \sum_{j = 1}^n Y_j\right) = \sum_{i = 1}^m\sum_{j = 1}^n \text{Cov}(X_i, Y_j)$
 \end{enumerate}
 
 \end{frame}
@@ -1472,7 +1473,7 @@ $$
 \frametitle{Mean and Variance of Sample Mean}
 
 \begin{Theorem}
-Let $X_1, X_2,\ldots, X_n$ be a random sample from a distribution with mean $\mu$ and variance $\sigma^2$. Let $\bar{X}_n$ be the sample mean. Then $E[\bar{X}_n] = \mu$ and $\text{Var}(\bar{X}_n) =\frac{\sigma^2}{n}$.
+Let $X_1, X_2,\ldots, X_n$ be an independent random sample from a distribution with mean $\mu$ and variance $\sigma^2$. Let $\bar{X}_n$ be the sample mean. Then $E[\bar{X}_n] = \mu$ and $\text{Var}(\bar{X}_n) =\frac{\sigma^2}{n}$.
 \end{Theorem}
 \end{frame}
 
