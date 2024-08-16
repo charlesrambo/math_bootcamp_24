@@ -21,3 +21,5 @@
 **[Lecture 10](https://ucla.zoom.us/rec/share/1OD5XBQdvcBBwwRhMXNeoxHhSo6XEa_XESKwIb-i3Q3X20uHqGswU-pZkQqO0Gyr.vC3P3WPW1REeEckR)** Normal distribution, exponential distribution, expected values, variance, moments, the moment generating function, joint distributions, and marginal distributions
 
 **[Lecture 11](https://ucla.zoom.us/rec/share/gGIyGyShyZ3vwQoiSJEq6VTlyTQQcEykze5sDzFUN2ZVeOYbgxFY5cq4o1jUARI.4ovKsSmLXLPZGZ5O)** Covariance, correlation, Markov's inequality, Chebyshev's inequality, convergence in probability, the Law of Large Numbers, convergence in distribution, and the empirical cdf
+
+**[Lecture 12](https://ucla.zoom.us/rec/share/pR2a2a0jKGOgTWbCSFb-vyi7ihiQEsrSX12xMfZmZjL64zGOrl6bugIbuZQ2xcrs.dkmOSfsAnIp44S8t)** The central limit theorem, sample standard deviation, hypothesis testing, covariance matrices, the multivariate normal distribution
