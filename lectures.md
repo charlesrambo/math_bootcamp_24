@@ -23,3 +23,5 @@
 **[Lecture 11](https://ucla.zoom.us/rec/share/gGIyGyShyZ3vwQoiSJEq6VTlyTQQcEykze5sDzFUN2ZVeOYbgxFY5cq4o1jUARI.4ovKsSmLXLPZGZ5O)** Covariance, correlation, Markov's inequality, Chebyshev's inequality, convergence in probability, the Law of Large Numbers, convergence in distribution, and the empirical cdf
 
 **[Lecture 12](https://ucla.zoom.us/rec/share/pR2a2a0jKGOgTWbCSFb-vyi7ihiQEsrSX12xMfZmZjL64zGOrl6bugIbuZQ2xcrs.dkmOSfsAnIp44S8t)** The central limit theorem, sample standard deviation, hypothesis testing, covariance matrices, the multivariate normal distribution
+
+**[Lecture 13](https://ucla.zoom.us/rec/share/xb6a9N8hFqPImWOL61hpO_f0N4xDD8btL0Lx0usEYGHRiztD8ki9kGgjD51SYpkH.T5KNkUoRrWet3GA5)** Principal component analysis, clipping the covariance matrix, Marchenko-Pastur distribution, using the Marchenko-Pastur distribution to clip the covariance matrix, stochastic processes, Brownian motion, martingales
