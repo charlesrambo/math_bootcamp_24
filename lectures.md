@@ -25,3 +25,5 @@
 **[Lecture 12](https://ucla.zoom.us/rec/share/pR2a2a0jKGOgTWbCSFb-vyi7ihiQEsrSX12xMfZmZjL64zGOrl6bugIbuZQ2xcrs.dkmOSfsAnIp44S8t)** The central limit theorem, sample standard deviation, hypothesis testing, covariance matrices, the multivariate normal distribution
 
 **[Lecture 13](https://ucla.zoom.us/rec/share/xb6a9N8hFqPImWOL61hpO_f0N4xDD8btL0Lx0usEYGHRiztD8ki9kGgjD51SYpkH.T5KNkUoRrWet3GA5)** Principal component analysis, clipping the covariance matrix, Marchenko-Pastur distribution, using the Marchenko-Pastur distribution to clip the covariance matrix, stochastic processes, Brownian motion, martingales
+
+**[Lecture 14](https://ucla.zoom.us/rec/share/eSniHNA-EiRY9GG03YWYPjA3UisoEtEeu2hn0BUMIjIMjQkrDgDDAufmHEQ6KpPi.OrsojM2G8-MobrQR)** Quadratic variation, law of iterated expectations, the Itô Isometry, brain teasers
